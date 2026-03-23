@@ -1,0 +1,774 @@
+<h1 style="color: #A51C30; border-bottom: 3px solid #A51C30; padding-bottom: 10px;">ES 192: Materials Selection in Mechanical Design</h1>
+<p style="font-size: 1.1em;"><strong>Harvard John A. Paulson School of Engineering and Applied Sciences &mdash; Fall 2026</strong></p>
+
+<hr />
+
+<h2>Course Information</h2>
+<table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+  <tbody>
+    <tr>
+      <td style="padding: 8px 12px; border: 1px solid #ddd; background-color: #f5f5f5; width: 30%;"><strong>Instructor</strong></td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">Seymur Hasanov (<a href="mailto:shasanov@seas.harvard.edu">shasanov@seas.harvard.edu</a>)</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px 12px; border: 1px solid #ddd; background-color: #f5f5f5;"><strong>Lectures</strong></td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">Two per week &mdash; [Days/Times TBD]</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px 12px; border: 1px solid #ddd; background-color: #f5f5f5;"><strong>Lab Director</strong></td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">Nora Cullen, Director for Active Learning, Mechanical Engineering (<a href="mailto:ncullen@g.harvard.edu">ncullen@g.harvard.edu</a>), SEC LL1.243</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px 12px; border: 1px solid #ddd; background-color: #f5f5f5;"><strong>Lab CAs</strong></td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">[TBD &mdash; recruiting from ES 51 CAs]</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px 12px; border: 1px solid #ddd; background-color: #f5f5f5;"><strong>Office Hours</strong></td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">[TBD]</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px 12px; border: 1px solid #ddd; background-color: #f5f5f5;"><strong>Lab Location</strong></td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">Active Learning Laboratories (ALL), Science &amp; Engineering Complex, Lower Level</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Lab Sections</h3>
+<table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+  <thead>
+    <tr style="background-color: #A51C30; color: white;">
+      <th style="padding: 8px 12px; border: 1px solid #ddd; text-align: left;">Section</th>
+      <th style="padding: 8px 12px; border: 1px solid #ddd; text-align: left;">Day</th>
+      <th style="padding: 8px 12px; border: 1px solid #ddd; text-align: left;">Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">A</td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">Tuesday</td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">2:15 &ndash; 4:15 PM</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">B</td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">Wednesday</td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">9:45 &ndash; 11:45 AM</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">C</td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">Friday</td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">9:45 &ndash; 11:45 AM</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">D</td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">[TBD]</td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">[TBD]</td>
+    </tr>
+  </tbody>
+</table>
+<p><em>Additional sections may be added based on enrollment.</em></p>
+
+<hr />
+
+<h2>Course Description</h2>
+
+<p>How does an engineer select a material for a particular component or application? This course provides a <strong>systematic, rational methodology</strong> for answering that question, with a specific focus on <strong>material selection in mechanical design</strong>.</p>
+
+<p>There are now thousands of materials to choose from, new materials are constantly being discovered, the properties of existing materials are being improved, ever more sophisticated engineering systems are being devised, and new manufacturing processes&mdash;including additive manufacturing&mdash;are being developed. At the same time, constraints such as element scarcity, environmental impact, and sustainability requirements increasingly influence the designer's choices.</p>
+
+<p>This course describes how each of these developments influences the choices facing a mechanical designer today. The pedagogical approach combines:</p>
+<ul>
+  <li><strong>Lectures</strong> &mdash; theory, methodology, and case studies</li>
+  <li><strong>Materials selection software</strong> &mdash; materials database exploration, Ashby chart generation, and computer-aided selection</li>
+  <li><strong>COMSOL Multiphysics simulations</strong> &mdash; structural and thermal analysis to complement analytical methods</li>
+  <li><strong>Hands-on laboratory work</strong> &mdash; laser cutting, 3D printing, and silicone mold casting in the Active Learning Laboratories</li>
+  <li><strong>A structured mini-project</strong> (Weeks 1&ndash;5) followed by an <strong>open-ended team design project</strong> (Weeks 7&ndash;13)</li>
+</ul>
+
+<hr />
+
+<h2>Course Objectives</h2>
+
+<p>After completing the course, students should be able to:</p>
+<ol>
+  <li><strong>Translate design requirements</strong> for a mechanical component into materials selection criteria in terms of function, constraints, objectives, and free variables.</li>
+  <li><strong>Derive and apply materials indices</strong> from the mechanics of a component's function, and use them with Ashby property charts and materials databases to screen and rank candidate materials.</li>
+  <li><strong>Handle multiple constraints and conflicting objectives</strong> using active constraint methods, trade-off surfaces, and penalty functions.</li>
+  <li><strong>Evaluate the role of shape</strong> through shape factors and their interaction with materials indices.</li>
+  <li><strong>Select manufacturing processes</strong> appropriate to the chosen material, geometry, and production volume, understanding how processing affects material properties.</li>
+  <li><strong>Design with hybrid materials</strong>&mdash;composites, foams, sandwiches, and lattice structures&mdash;using rules of mixing and bounds methods.</li>
+  <li><strong>Use COMSOL simulations</strong> to predict structural behavior and validate material selection decisions against experimental results.</li>
+  <li><strong>Assess environmental impact</strong> through life-cycle assessment, embodied energy analysis, and eco-selection methods.</li>
+  <li><strong>Apply hands-on manufacturing skills</strong> (laser cutting, 3D printing, silicone mold casting) to realize material and process selections in physical prototypes.</li>
+  <li><strong>Communicate materials selection decisions</strong> through clear written reports and oral presentations.</li>
+</ol>
+
+<hr />
+
+<h2>Textbook and Resources</h2>
+
+<h3>Required Textbook</h3>
+<p><strong><em>Materials Selection in Mechanical Design</em></strong>, Sixth Edition<br />
+Michael F. Ashby, Butterworth-Heinemann / Elsevier, 2025<br />
+ISBN: 978-0-443-16028-8</p>
+<p>Winner of a Textbook Excellence Award (Texty). The definitive textbook on the subject, featuring full-color Ashby materials selection charts, worked examples, case studies, and exercises. The sixth edition includes expanded coverage of additive manufacturing, biomedical applications, digital manufacturing, and sustainability.</p>
+
+<h3>Software</h3>
+<table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+  <tbody>
+    <tr>
+      <td style="padding: 8px 12px; border: 1px solid #ddd; background-color: #f5f5f5; width: 25%; vertical-align: top;"><strong>Materials Selection Software</strong></td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">A course-specific materials database and selection tool will be provided for generating Ashby property charts, screening candidate materials, and exploring material property data. Access details will be shared at the start of the semester. <strong>Required for several assignments and both projects.</strong></td>
+    </tr>
+    <tr>
+      <td style="padding: 8px 12px; border: 1px solid #ddd; background-color: #f5f5f5; vertical-align: top;"><strong>COMSOL Multiphysics</strong></td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">Finite element simulation software for structural and thermal analysis. Available through HUIT VDI. Template simulation files will be provided for assignments and the mini-project. <strong>Required for selected assignments and both projects.</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Additional Resources</h3>
+<ul>
+  <li><strong>Videos:</strong> Links to relevant industry and manufacturing videos will be provided on Canvas before they are discussed in class.</li>
+  <li><strong>Supplementary readings:</strong> Articles, patent excerpts, and case studies will be posted on Canvas as assigned.</li>
+  <li><strong>COMSOL template files:</strong> Pre-built simulation files (.mph) for assignments and the mini-project will be available in the Canvas Files section.</li>
+</ul>
+
+<hr />
+
+<h2>Grading</h2>
+
+<table style="width: 100%; border-collapse: collapse; margin-bottom: 10px;">
+  <thead>
+    <tr style="background-color: #A51C30; color: white;">
+      <th style="padding: 8px 12px; border: 1px solid #ddd; text-align: left;">Component</th>
+      <th style="padding: 8px 12px; border: 1px solid #ddd; text-align: center; width: 15%;">Weight</th>
+      <th style="padding: 8px 12px; border: 1px solid #ddd; text-align: left;">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">Problem Sets</td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd; text-align: center;"><strong>25%</strong></td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">5&ndash;6 assignments combining narrative reports, materials database exercises, COMSOL simulations, and analytical problems</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">Mini-Project</td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd; text-align: center;"><strong>10%</strong></td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">Weeks 1&ndash;5 Hybrid Cantilever Challenge; team report with Ashby analysis, test data, and predicted vs. actual comparison</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">Midterm Exam</td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd; text-align: center;"><strong>15%</strong></td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">Take-home exam (Week 8); open-book, covers Chapters 1&ndash;14 (materials selection methodology, processes, multiple constraints, shape, and hybrids)</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">Group Project</td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd; text-align: center;"><strong>30%</strong></td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">Weeks 7&ndash;13; proposal, progress check-ins, prototype, final presentation, and written report</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">Participation</td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd; text-align: center;"><strong>10%</strong></td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">Engagement in lectures, case study discussions, lab attendance, and team collaboration</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">Final Presentation</td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd; text-align: center;"><strong>10%</strong></td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">End-of-semester group project presentation to the class (12&ndash;15 minutes per team)</td>
+    </tr>
+  </tbody>
+</table>
+<p><strong>There is no final exam.</strong> The midterm is a take-home, open-book exam (designed for approximately 90 minutes, with a 24-hour window to complete). It assesses individual understanding of the core methodology covered in Chapters 1&ndash;14.</p>
+<p>Assignments are due as posted on Canvas. Late submissions will be accepted with a penalty unless prior arrangements are made with the instructor. This course is letter graded.</p>
+
+<hr />
+
+<h2>Detailed Weekly Schedule</h2>
+<p><em>Two lectures per week + one lab section per student. Readings refer to Ashby, 6th Edition.</em></p>
+
+<!-- ==================== PART 1 ==================== -->
+<h3 style="color: #A51C30; margin-top: 30px;">Part 1: Materials and Process Selection &mdash; The Basics (Weeks 1&ndash;5)</h3>
+
+<!-- WEEK 1 -->
+<div style="border: 1px solid #ddd; border-radius: 6px; padding: 15px; margin-bottom: 20px; background-color: #fafafa;">
+<h4 style="margin-top: 0; color: #A51C30;">Week 1 &mdash; Introduction to Materials and Design</h4>
+<table style="width: 100%; border-collapse: collapse;">
+  <tbody>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0; width: 20%;"><strong>Readings</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">Chapters 1 and 2</td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0;"><strong>Lecture Topics</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">
+        <ul style="margin: 5px 0; padding-left: 20px;">
+          <li>Why materials selection is necessary. Thousands of materials, orders of magnitude in property ranges.</li>
+          <li>The design process: types of design, function-material-shape-process interaction.</li>
+          <li>Families of engineering materials: metals, polymers, ceramics, composites, natural materials.</li>
+          <li>Material properties and their units: mechanical, thermal, electrical, optical, environmental.</li>
+          <li>Introduction to materials databases and selection software: navigating property data, generating Ashby plots.</li>
+          <li>Case study: Devices to open corked bottles (Ch 1.7).</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0;"><strong>Lab</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">
+        <strong>ALL Orientation &amp; Mini-Project Launch</strong><br />
+        Safety training (30 min). Equipment tour (laser cutters, 3D printers, casting station). Mini-project briefing: <strong>the Hybrid Cantilever Challenge</strong> &mdash; teams design a multi-material cantilever that maximizes load/mass. Team formation (groups of 3). Functional decomposition: beam, clamp, connectors. Complete Design Requirements Tables for each component. Generate Ashby plots (E vs. &rho;), overlay material index M = E<sup>1/2</sup>/&rho;, select candidate materials from available stock.
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0;"><strong>MS Concept in Lab</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;"><em>Translation of design requirements: Function, Constraints, Objectives, Free Variables; materials indices for beams</em></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<!-- WEEK 2 -->
+<div style="border: 1px solid #ddd; border-radius: 6px; padding: 15px; margin-bottom: 20px; background-color: #fafafa;">
+<h4 style="margin-top: 0; color: #A51C30;">Week 2 &mdash; Materials Property Charts and the Selection Strategy</h4>
+<table style="width: 100%; border-collapse: collapse;">
+  <tbody>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0; width: 20%;"><strong>Readings</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">Chapters 3 and 4</td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0;"><strong>Lecture Topics</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">
+        <ul style="margin: 5px 0; padding-left: 20px;">
+          <li>Ashby property charts: reading log-log plots, material families as clusters, property correlations.</li>
+          <li>Key charts: modulus&ndash;density, strength&ndash;density, modulus&ndash;strength, fracture toughness&ndash;strength, thermal conductivity&ndash;electrical resistivity.</li>
+          <li>The selection strategy: translation &rarr; screening &rarr; ranking &rarr; documentation.</li>
+          <li>Deriving materials indices from mechanics: tie, beam, plate, shell in bending and tension.</li>
+          <li>Attribute limits. The structural index. Computer-aided selection.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0;"><strong>Lab</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">
+        <strong>Laser Cutting: Structural Components</strong><br />
+        Laser cutter training (20 min: operation, DXF/SVG file prep, kerf compensation). Teams cut structural components (beam, flanges, clamp plates) + standard test coupons (100 &times; 20 mm) from 2+ sheet materials. <strong>Baseline materials testing:</strong> 3-point bend test on coupons &mdash; measure deflection under known loads, calculate flexural modulus, compare to database values. This data justifies the material choice for the structural beam.
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0;"><strong>MS Concept in Lab</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;"><em>Property-based screening: measuring material properties and comparing to database; using data to justify beam material selection</em></td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0;"><strong>Assignment 1 Due</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">Getting started: materials property plots (Ashby charts), material index derivation for a simple component, short written report on a material of your choice. COMSOL orientation exercise.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<!-- WEEK 3 -->
+<div style="border: 1px solid #ddd; border-radius: 6px; padding: 15px; margin-bottom: 20px; background-color: #fafafa;">
+<h4 style="margin-top: 0; color: #A51C30;">Week 3 &mdash; Materials Selection Case Studies</h4>
+<table style="width: 100%; border-collapse: collapse;">
+  <tbody>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0; width: 20%;"><strong>Readings</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">Chapter 5 (selected sections: 5.2 Oars, 5.3 Telescopes, 5.6 Flywheels, 5.7 Springs, 5.11 Pressure Vessels, 5.18 Heat Sinks)</td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0;"><strong>Lecture Topics</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">
+        <ul style="margin: 5px 0; padding-left: 20px;">
+          <li>Applying the full selection methodology to real components.</li>
+          <li>Case studies: materials for oars (stiff, light beams), telescope mirrors (low thermal distortion), flywheels (maximum energy storage), springs (maximum elastic energy), safe pressure vessels (leak-before-break), heat sinks (thermal conductivity + stiffness).</li>
+          <li>Lightweighting: evolution of aircraft materials (wood &rarr; aluminum &rarr; CFRP). The Boeing 787 Dreamliner.</li>
+          <li>Wind turbine blade material selection.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0;"><strong>Lab</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">
+        <strong>3D Printing: Connectors &amp; Mold Patterns</strong><br />
+        FDM printing training (20 min: slicer, infill, orientation, supports). Teams design and print functional components (joints, brackets, clamp adapters) + mold pattern for casting (with draft angles, parting features). Filament selection: PLA (stiff), PETG (tough), TPU (flexible grip pads). <strong>Print orientation experiment:</strong> two identical small beams printed flat vs. on-edge &mdash; bend test both to demonstrate layer-direction anisotropy. Longer prints queued to run after session.
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0;"><strong>MS Concept in Lab</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;"><em>Process-property relationships: how print orientation creates anisotropy; Design for AM (infill, supports, filament selection)</em></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<!-- WEEK 4 -->
+<div style="border: 1px solid #ddd; border-radius: 6px; padding: 15px; margin-bottom: 20px; background-color: #fafafa;">
+<h4 style="margin-top: 0; color: #A51C30;">Week 4 &mdash; Processes and Their Effect on Properties</h4>
+<table style="width: 100%; border-collapse: collapse;">
+  <tbody>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0; width: 20%;"><strong>Readings</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">Chapters 6 and 7</td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0;"><strong>Lecture Topics</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">
+        <ul style="margin: 5px 0; padding-left: 20px;">
+          <li>Classifying manufacturing processes: shaping (casting, forming, machining, molding, AM), joining, finishing.</li>
+          <li>How processing changes microstructure and properties: process-property trajectories.</li>
+          <li>Systematic process selection using matrices. Process limits: size, shape complexity, tolerance, surface finish, material compatibility.</li>
+          <li>Process cost modeling: material cost, tooling cost, capital, overhead, batch size effects.</li>
+          <li>Video: Making a soda can.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0;"><strong>Lab</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">
+        <strong>Silicone Mold Casting &amp; Assembly</strong><br />
+        Casting training (15 min: silicone mold-making from 3D-printed patterns, resin mixing, degassing, cure). Teams make silicone molds around their patterns (backup pre-made molds available). Cast components in selected resin: rigid PU (structural), flexible PU (damping/grip), epoxy (strong bond), or fiber-filled resin. While parts cure, begin assembling non-cast components &mdash; dry-fit, plan joining methods (bolts, adhesive, press-fit). Discussion: shapes enabled by casting, defects and their effects.
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0;"><strong>MS Concept in Lab</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;"><em>Process selection for complex geometry; casting constraints and defects; resin selection as a material choice</em></td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0;"><strong>Assignment 2 Due</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">Materials selection for a mechanical component (aircraft wing or wind turbine blade): Design Requirements Table, derive performance index, Ashby chart screening, written analysis of material evolution. Process cost comparison problem.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<!-- WEEK 5 -->
+<div style="border: 1px solid #ddd; border-radius: 6px; padding: 15px; margin-bottom: 20px; background-color: #fafafa;">
+<h4 style="margin-top: 0; color: #A51C30;">Week 5 &mdash; Additive Manufacturing &amp; Mini-Project Testing</h4>
+<table style="width: 100%; border-collapse: collapse;">
+  <tbody>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0; width: 20%;"><strong>Readings</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">Chapter 8 (Additive Manufacturing)</td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0;"><strong>Lecture Topics</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">
+        <ul style="margin: 5px 0; padding-left: 20px;">
+          <li>Additive manufacturing processes: FDM, SLA, SLS, binder jetting, DED.</li>
+          <li>Materials for AM: polymers, metals, ceramics. Properties of AM materials vs. conventionally processed.</li>
+          <li>Design for additive manufacturing: topology optimization, lattice structures, part consolidation.</li>
+          <li>AM and the environment: material waste, energy consumption, lifecycle comparison.</li>
+          <li>The business case for AM: when does AM make economic sense?</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0;"><strong>Lab</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">
+        <strong>Load Testing &amp; Validation</strong><br />
+        Final assembly. Weigh and measure cantilevers. Test protocol: clamp to fixture, load tip incrementally, record deflection at each step, identify F_max at 10 mm deflection, continue to failure. Calculate P = F_max / m. Post class leaderboard. <strong>Key learning moment:</strong> compare Week 1 Ashby predictions to actual results &mdash; discuss discrepancies (joint failures, defects, boundary conditions, material variability). Class-wide discussion: which design choices mattered most?
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0;"><strong>MS Concept in Lab</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;"><em>Predicted vs. actual performance &mdash; validating Ashby analysis with experimental data; understanding why models differ from reality</em></td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0;"><strong>Mini-Project Report Due</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">Team report (3&ndash;5 pages): design rationale with Ashby plots, material/process justification per component, load-deflection data, predicted vs. actual comparison, failure mode analysis, lessons learned.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ==================== PART 2 ==================== -->
+<h3 style="color: #A51C30; margin-top: 30px;">Part 2: Advanced Selection Methods (Weeks 6&ndash;8)</h3>
+
+<!-- WEEK 6 -->
+<div style="border: 1px solid #ddd; border-radius: 6px; padding: 15px; margin-bottom: 20px; background-color: #fafafa;">
+<h4 style="margin-top: 0; color: #A51C30;">Week 6 &mdash; Multiple Constraints and Conflicting Objectives</h4>
+<table style="width: 100%; border-collapse: collapse;">
+  <tbody>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0; width: 20%;"><strong>Readings</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">Chapters 9 and 10</td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0;"><strong>Lecture Topics</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">
+        <ul style="margin: 5px 0; padding-left: 20px;">
+          <li>Selection with multiple constraints: the active constraint method.</li>
+          <li>Conflicting objectives: trade-off surfaces, penalty functions, exchange constants, weight factors.</li>
+          <li>Case studies: light pressure vessels (Ch 10.2), con-rods for high-performance engines (Ch 10.3), cost-effective bumpers (Ch 10.7), disk brake calipers (Ch 10.8).</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0;"><strong>Lab</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">
+        <strong>COMSOL Simulation Lab</strong> (run by COMSOL instruction team)<br />
+        Introduction to COMSOL Multiphysics. Guided cantilever beam simulation: set up geometry, assign materials, apply boundary conditions and loads. Students model their own mini-project cantilever and compare simulated tip deflection to Week 5 experimental data. Parametric study: vary material or thickness and observe effects. Discussion of when simulation is useful vs. when testing is necessary.
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0;"><strong>Assignment 3 Due</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">Multiple constraints and penalty functions: COMSOL contact stress simulation (cylinder on flat substrate, multiple material combinations); analytical comparison using Hertzian equations; penalty function analysis for a transportation application.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<!-- WEEK 7 -->
+<div style="border: 1px solid #ddd; border-radius: 6px; padding: 15px; margin-bottom: 20px; background-color: #fafafa;">
+<h4 style="margin-top: 0; color: #A51C30;">Week 7 &mdash; Selection of Material and Shape</h4>
+<table style="width: 100%; border-collapse: collapse;">
+  <tbody>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0; width: 20%;"><strong>Readings</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">Chapters 11 and 12</td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0;"><strong>Lecture Topics</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">
+        <ul style="margin: 5px 0; padding-left: 20px;">
+          <li>Shape factors for elastic bending, failure, and buckling.</li>
+          <li>Limits to shape efficiency imposed by material properties.</li>
+          <li>Material-shape combinations: exploring the expanded design space.</li>
+          <li>Material indices that include shape. Graphical co-selection.</li>
+          <li>Architectured materials: microscopic shape (Ch 11.7).</li>
+          <li>Case studies: spars for man-powered planes (Ch 12.2), bicycle forks (Ch 12.3), floor joists (Ch 12.4), ultra-efficient springs (Ch 12.8).</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0;"><strong>Lab</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">
+        <strong>Group Project Launch</strong><br />
+        Team formation (groups of 3; some groups of 4). Brainstorming session. Discuss potential project topics with CAs and instructor. Begin developing project proposals.
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0;"><strong>Assignment 4 Due</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">Shape and processing: second moment of area calculations for different cross-sections; shape efficiency factor derivations; COMSOL thermal distortion simulation (bimetallic strip heated to different temperatures); process cost comparison problem.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<!-- WEEK 8 -->
+<div style="border: 1px solid #ddd; border-radius: 6px; padding: 15px; margin-bottom: 20px; background-color: #fafafa;">
+<h4 style="margin-top: 0; color: #A51C30;">Week 8 &mdash; Designing Hybrid Materials</h4>
+<table style="width: 100%; border-collapse: collapse;">
+  <tbody>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0; width: 20%;"><strong>Readings</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">Chapters 13 and 14</td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0;"><strong>Lecture Topics</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">
+        <ul style="margin: 5px 0; padding-left: 20px;">
+          <li>Filling holes in material-property space: the concept of hybrid materials.</li>
+          <li>Composites: rule of mixtures, upper and lower bounds, Hashin-Shtrikman bounds.</li>
+          <li>Cellular structures: foams and lattices. Fabrication, scaling laws, bending- vs. stretching-dominated behavior.</li>
+          <li>Sandwich structures and multilayers: stiffness and strength analysis.</li>
+          <li>The mechanical efficiency of natural materials.</li>
+          <li>Case studies: metal matrix composites (Ch 14.2), natural fiber composites (Ch 14.3), power cables (Ch 14.4), refrigerator walls (Ch 14.7).</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0;"><strong>Lab</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">
+        <strong>Group Project Work</strong><br />
+        <strong>Project proposals due</strong> (1&ndash;2 pages: problem statement, initial Ashby analysis, planned manufacturing, test plan). Instructor feedback. Design iteration and begin fabrication.
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #fff3cd;"><strong>Midterm Exam</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #fff3cd;">
+        <strong>Take-home, open-book exam.</strong> Distributed at the end of Week 8; 24-hour window to complete (designed for ~90 minutes). Covers all of Parts 1 and 2: materials selection methodology, Ashby charts and materials indices, process selection and cost, additive manufacturing, multiple constraints and conflicting objectives, shape factors, and hybrid materials (Chapters 1&ndash;14). Textbook and course notes permitted; no internet. Individual work only. Submit through Canvas.
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ==================== SUPPLEMENTARY ==================== -->
+<h3 style="color: #A51C30; margin-top: 30px;">Supplementary Topics in Mechanical Design (Weeks 9&ndash;11)</h3>
+
+<!-- WEEK 9 -->
+<div style="border: 1px solid #ddd; border-radius: 6px; padding: 15px; margin-bottom: 20px; background-color: #fafafa;">
+<h4 style="margin-top: 0; color: #A51C30;">Week 9 &mdash; Mechanical Response, Contact Mechanics, and Wear</h4>
+<table style="width: 100%; border-collapse: collapse;">
+  <tbody>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0; width: 20%;"><strong>Readings</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">Supplementary lecture notes + Chapter 2 (review) and Chapter 5 (selected sections)</td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0;"><strong>Lecture Topics</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">
+        <ul style="margin: 5px 0; padding-left: 20px;">
+          <li>Elastic, plastic, and viscoelastic response. Energy dissipation and loss tangent.</li>
+          <li>Contact mechanics: Hertzian stresses, hardness, indentation.</li>
+          <li>Wear resistance and surface engineering. Hard coatings.</li>
+          <li>Case studies: diamond-like carbon (DLC) coatings, hip implants, ball bearings.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0;"><strong>Lab</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">
+        <strong>Group Project Work</strong><br />
+        <strong>Progress check-in</strong> with instructor during lab.
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<!-- WEEK 10 -->
+<div style="border: 1px solid #ddd; border-radius: 6px; padding: 15px; margin-bottom: 20px; background-color: #fafafa;">
+<h4 style="margin-top: 0; color: #A51C30;">Week 10 &mdash; Thermal Design in Materials Selection</h4>
+<table style="width: 100%; border-collapse: collapse;">
+  <tbody>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0; width: 20%;"><strong>Readings</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">Supplementary lecture notes + Chapter 5 (Sections 5.13&ndash;5.18)</td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0;"><strong>Lecture Topics</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">
+        <ul style="margin: 5px 0; padding-left: 20px;">
+          <li>Thermal conductivity, diffusivity, and expansion. Thermal expansion mismatch stresses.</li>
+          <li>Thermal shock resistance. Low-expansion materials and structures.</li>
+          <li>Case studies: thermal barrier coatings in engines, telescope mirror materials, thermal energy storage, heat exchangers, minimizing thermal distortion in precision devices.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0;"><strong>Lab</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;"><strong>Group Project Work</strong><br />Fabrication and iterative testing.</td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0;"><strong>Assignment 5 Due</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">Fibers, composites, and hybrids: Weibull statistics for fiber strengths; fiber pull-out mechanics (analytical derivation + COMSOL fiber-in-matrix simulation); rule of mixtures for a composite system.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<!-- WEEK 11 -->
+<div style="border: 1px solid #ddd; border-radius: 6px; padding: 15px; margin-bottom: 20px; background-color: #fafafa;">
+<h4 style="margin-top: 0; color: #A51C30;">Week 11 &mdash; Foams, Cellular Materials, and Architectured Structures</h4>
+<table style="width: 100%; border-collapse: collapse;">
+  <tbody>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0; width: 20%;"><strong>Readings</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">Chapter 13 (Sections 13.5&ndash;13.6, review) + Chapter 8 (Section 8.6) + supplementary notes</td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0;"><strong>Lecture Topics</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">
+        <ul style="margin: 5px 0; padding-left: 20px;">
+          <li>Foams: fabrication (gas injection, pellet expansion), open vs. closed porosity, mechanical scaling laws.</li>
+          <li>Bending-dominated vs. stretching-dominated behavior. Expanded property space.</li>
+          <li>Multifunctional cellular materials: energy absorption, thermal insulation, catalyst supports.</li>
+          <li>Architectured materials: periodic lattices via additive manufacturing. Design for multifunctionality.</li>
+          <li>Case studies: safety helmets, sneaker mid-soles, thermal insulation, catalytic converters, energy absorbers.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0;"><strong>Lab</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;"><strong>Group Project Work</strong><br />Continued fabrication and testing.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ==================== PART 3 ==================== -->
+<h3 style="color: #A51C30; margin-top: 30px;">Part 3: The Wider Context (Weeks 12&ndash;13)</h3>
+
+<!-- WEEK 12 -->
+<div style="border: 1px solid #ddd; border-radius: 6px; padding: 15px; margin-bottom: 20px; background-color: #fafafa;">
+<h4 style="margin-top: 0; color: #A51C30;">Week 12 &mdash; Materials, Environment, and Sustainability</h4>
+<table style="width: 100%; border-collapse: collapse;">
+  <tbody>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0; width: 20%;"><strong>Readings</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">Chapters 15 and 16</td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0;"><strong>Lecture Topics</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">
+        <ul style="margin: 5px 0; padding-left: 20px;">
+          <li>The material life cycle. Environmental life-cycle assessment (E-LCA).</li>
+          <li>Eco-attributes: embodied energy, CO<sub>2</sub> footprint, water usage, end-of-life potential.</li>
+          <li>Eco-audits and energy fingerprints. Eco-selection.</li>
+          <li>Sustainable development: the three capitals (manufactured, natural, human). Social LCA. Life-cycle costing.</li>
+          <li>Resource scarcity and substitution strategies.</li>
+          <li>Case studies: drink containers (Ch 15.7), crash barriers (Ch 15.7), LCSA and materials selection (Ch 16.8).</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0;"><strong>Lab</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">
+        <strong>Group Project &mdash; Final Fabrication &amp; Testing</strong><br />
+        Complete prototypes. Conduct final performance tests. Collect data for report.
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0;"><strong>Assignment 6 Due</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">Materials and the environment: eco-audit of a product using materials database; comparison of material substitution scenarios; short essay on sustainability trade-offs in materials selection.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<!-- WEEK 13 -->
+<div style="border: 1px solid #ddd; border-radius: 6px; padding: 15px; margin-bottom: 20px; background-color: #fafafa;">
+<h4 style="margin-top: 0; color: #A51C30;">Week 13 &mdash; The Big Picture and Project Presentations</h4>
+<table style="width: 100%; border-collapse: collapse;">
+  <tbody>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0; width: 20%;"><strong>Readings</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">Chapter 17</td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0;"><strong>Lecture Topics</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">
+        <ul style="margin: 5px 0; padding-left: 20px;">
+          <li>The wider context: materials and the five big issues (energy, transportation, construction, electronics, health).</li>
+          <li>Big influencers: population, urbanization, legislation, sustainability goals.</li>
+          <li>Course synthesis: from property charts to prototypes &mdash; the complete materials selection workflow.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0;"><strong>Lab</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">
+        <strong>Group Project Presentations</strong><br />
+        12&ndash;15 minutes per team. Q&amp;A from class and instructor.
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 10px; border: 1px solid #eee; background-color: #f0f0f0;"><strong>Final Report Due</strong></td>
+      <td style="padding: 6px 10px; border: 1px solid #eee;">Written group project report (10&ndash;15 pages) due one week after the last class. Submit through Canvas.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<hr />
+
+<h2>Assignment Summary</h2>
+<p>Assignments integrate reading, analytical problem-solving, materials database and Ashby chart exercises, COMSOL simulations, and written narrative reports. Collaboration is encouraged but each student submits their own work. Reports should be typed and submitted through Canvas.</p>
+
+<table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+  <thead>
+    <tr style="background-color: #A51C30; color: white;">
+      <th style="padding: 8px 12px; border: 1px solid #ddd; text-align: left; width: 8%;">#</th>
+      <th style="padding: 8px 12px; border: 1px solid #ddd; text-align: left; width: 22%;">Title</th>
+      <th style="padding: 8px 12px; border: 1px solid #ddd; text-align: left;">Key Topics</th>
+      <th style="padding: 8px 12px; border: 1px solid #ddd; text-align: left; width: 12%;">Due</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">1</td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">Getting Started</td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">Materials property plots (Ashby charts), materials index derivation, material report, COMSOL orientation</td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">Week 2</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">2</td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">Selection Methodology</td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">Design Requirements Table, performance indices, Ashby chart screening, process cost comparison</td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">Week 4</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">3</td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">Constraints &amp; Contact</td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">COMSOL contact stress simulation, Hertzian analysis, penalty function for multi-objective selection using materials database</td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">Week 6</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">4</td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">Shape &amp; Processing</td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">Second moment of area, shape efficiency factors, COMSOL thermal distortion, cost modeling</td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">Week 7</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">5</td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">Fibers &amp; Composites</td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">Weibull statistics, fiber pull-out mechanics, COMSOL fiber-in-matrix simulation, rule of mixtures</td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">Week 10</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">6</td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">Environment &amp; Sustainability</td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">Eco-audit of a product, material substitution comparison, sustainability essay</td>
+      <td style="padding: 8px 12px; border: 1px solid #ddd;">Week 12</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2>Projects</h2>
+
+<h3>Mini-Project: The Hybrid Cantilever Challenge (Weeks 1&ndash;5)</h3>
+<p>Working in teams of 3, students design, fabricate, and test a <strong>multi-material cantilever beam</strong> that must support the maximum load at a fixed overhang distance while minimizing total weight. Each component uses a different manufacturing process &mdash; <strong>laser cutting</strong> for structural members, <strong>3D printing</strong> for connectors and custom joints, and <strong>silicone mold casting</strong> for complex-geometry load-bearing components.</p>
+<p>Every material and process choice must be justified using the Ashby methodology: Design Requirements Tables, materials indices, and property charts. Students compare their Week 1 predictions to actual test results, learning firsthand where models succeed and where real-world factors (joints, defects, boundary conditions) create discrepancies. The performance metric is <strong>P = F<sub>max</sub> / m</strong> (maximum load at 10 mm deflection divided by total mass).</p>
+<p>The mini-project is intentionally structured so that the manufacturing skills, materials testing experience, selection methodology, and design-build-test workflow learned each week transfer directly to the group project.</p>
+
+<h3>Group Project (Weeks 7&ndash;13)</h3>
+<p>Teams of 3 select, design, build, and test a project of their own choosing that demonstrates materials selection principles in a mechanical design context. Each project must include:</p>
+<ol>
+  <li>A clearly defined design problem with Function, Constraints, Objectives, and Free Variables</li>
+  <li>A formal materials selection analysis using the Ashby methodology</li>
+  <li>COMSOL simulation of at least one structural/thermal aspect</li>
+  <li>Fabrication of a physical prototype using ALL facilities</li>
+  <li>Quantitative testing of at least one performance metric</li>
+  <li>A final presentation (12&ndash;15 min) and written report (10&ndash;15 pages)</li>
+</ol>
+<p>Project proposals are due in Week 8. The instructor will meet with each team regularly for project brainstorming and guidance.</p>
+
+<hr />
+
+<h2>Relation to Other Courses</h2>
+
+<p>This course complements other courses in Mechanical Engineering but has <strong>no prerequisites</strong>. Relevant connections include:</p>
+<ul>
+  <li><strong>ES 51</strong> (Engineering Design &amp; Rapid Prototyping): Practical experience with machine tools and mechanical design principles.</li>
+  <li><strong>ES 120</strong> (Solid Mechanics): Derivation of elasticity equations used in materials indices.</li>
+  <li><strong>ES 183</strong> (Fundamentals of Heat Transfer): Thermal engineering concepts for thermal materials selection.</li>
+  <li><strong>ES 125</strong> (Mechanical Systems): Actuation and energy absorption concepts.</li>
+</ul>
+<p>ES 192 is an elective within both the <strong>Mechanical Systems</strong> and <strong>Thermal</strong> tracks of the S.B. in Mechanical Engineering, and is open to Bioengineering, ESE, A.B. students, and any interested Harvard student regardless of degree program. Full degree requirements: <a href="https://handbook.fas.harvard.edu/book/mechanical-engineering">https://handbook.fas.harvard.edu/book/mechanical-engineering</a></p>
+
+<hr />
+
+<h2>Course Policies</h2>
+
+<h3>Collaboration</h3>
+<p>You are encouraged to discuss assignments and project work with classmates. However, written submissions for problem sets must be your own individual work. Project deliverables (mini-project and group project) are team submissions.</p>
+
+<h3>Academic Integrity</h3>
+<p>Students are expected to adhere to the Harvard Honor Code. Proper citation is required for all external sources, data, and figures used in reports.</p>
+
+<h3>Attendance</h3>
+<p>Attendance at lectures, lab sections, and project presentations is expected. Lab attendance is particularly important during Weeks 1&ndash;5 (mini-project) as each session builds on the previous one. If you must miss a lab, notify your team and the instructor in advance.</p>
+
+<h3>Late Work</h3>
+<p>Assignments are due as posted on Canvas. Late submissions will be accepted with a grade penalty unless prior arrangements are made with the instructor.</p>
+
+<h3>Accessibility</h3>
+<p>Students needing accommodations should contact the Accessible Education Office (AEO) and inform the instructor as early as possible so appropriate arrangements can be made for both lectures and lab sessions.</p>
+
+<hr />
+
+<p style="text-align: center; color: #888; font-style: italic;">This syllabus is subject to change. Updates will be communicated through Canvas.</p>
