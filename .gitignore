@@ -1,0 +1,11 @@
+# Book PDF (copyrighted)
+Materials Selection in Mechanical Design.pdf
+
+# Previous course materials (PDFs)
+Lecture notes/
+Assignments/
+
+# macOS
+.DS_Store
+github_pat_*
+Books/

@@ -6,7 +6,9 @@
 ---
 
 **Instructor:** Seymur Hasanov (shasanov@seas.harvard.edu)
-**Lectures:** Two per week — [Days/Times TBD]
+**Lectures:** Tu/Th 12:45–2:00 PM
+**Lab Location:** Room 1.114, SEC
+**Office Hours:** [TBD]
 **Lab Sections:**
 
 | Section | Day | Time |
@@ -16,10 +18,11 @@
 | C | Friday | 9:45 – 11:45 AM |
 | D | [TBD] | [TBD] |
 
-**Lab Location:** Active Learning Laboratories (ALL), SEC Lower Level
-**Lab Director:** Nora Cullen, Director for Active Learning, Mechanical Engineering (ncullen@g.harvard.edu, SEC LL1.243)
-**Lab Course Assistants:** [TBD — recruiting from ES 51 CAs]
-**Office Hours:** [TBD]
+---
+
+## Prerequisites
+
+No formal prerequisites. Students should be comfortable with algebra and basic physics concepts (force, energy, stress, strain). Prior coursework in solid mechanics (e.g., ES 120) is helpful but not required — key concepts will be introduced as needed. Familiarity with CAD software and shop tools (e.g., from ES 51) is useful for the lab component but not expected.
 
 ---
 
@@ -77,27 +80,14 @@ Winner of a Textbook Excellence Award (Texty). This is the definitive textbook o
 |-----------|--------|-------------|
 | Problem Sets | 25% | 5–6 assignments; narrative reports + materials database exercises |
 | Mini-Project | 10% | Weeks 1–5 lab project; team deliverable |
-| Midterm Exam | 15% | Take-home, open-book exam (Week 8); covers Chapters 1–14 |
+| Midterm Exam | 15% | In-class exam (Week 8); covers Chapters 1–14 |
 | Group Project | 30% | Weeks 7–13; proposal, progress reports, final presentation, written report |
-| Participation | 10% | Engagement in lectures, case study discussions, and lab |
-| Final Presentation | 10% | End-of-semester project presentation to the class |
+| Participation | 5% | Engagement in lectures, case study discussions, lab attendance, and team collaboration |
+| Final Presentation | 15% | End-of-semester group project presentation to the class (12–15 minutes per team) |
 
-There is no final exam. The midterm is a take-home, open-book exam (designed for ~90 minutes, with a 24-hour window). It assesses individual understanding of the core methodology covered in Chapters 1–14.
+There is no final exam. The midterm is an in-class exam assessing individual understanding of the core methodology covered in Chapters 1–14.
 
 Late policy: Assignments are due as posted on Canvas. Late submissions will be accepted with a penalty of [TBD]% per day unless prior arrangements are made with the instructor.
-
-## Relation to Other Courses
-
-The course complements other courses in Mechanical Engineering but has **no prerequisites**. Relevant connections include:
-
-- **ES 51** (Engineering Design & Rapid Prototyping): Practical experience with machine tools and mechanical principles.
-- **ES 120** (Solid Mechanics): Elasticity equations used in deriving materials indices.
-- **ES 183** (Fundamentals of Heat Transfer): Thermal engineering concepts relevant to thermal materials selection.
-- **ES 125** (Mechanical Systems): Actuation and energy absorption concepts.
-
-ES 192 is an elective within both the Mechanical Systems and Thermal tracks of the S.B. in Mechanical Engineering, and is open to Bioengineering, ESE, A.B. students, and any interested Harvard student regardless of degree program. Full degree requirements: https://handbook.fas.harvard.edu/book/mechanical-engineering
-
----
 
 ## Weekly Schedule
 
@@ -150,7 +140,7 @@ Two lectures per week + one lab section per student. Readings refer to the textb
 **Readings:** Chapters 13 and 14
 **Lab:** Group project work. **Project proposals due** (1–2 pages). Instructor feedback. Design iteration and begin fabrication.
 **Assignment 4 due**
-**Midterm Exam:** Take-home, open-book. Distributed end of Week 8; 24-hour window (designed for ~90 min). Covers Chapters 1–14: selection methodology, Ashby charts, materials indices, processes, AM, multiple constraints, shape factors, and hybrid materials. Textbook and notes permitted; no internet. Individual work.
+**Midterm Exam:** In-class exam. Covers Chapters 1–14: selection methodology, Ashby charts, materials indices, processes, AM, multiple constraints, shape factors, and hybrid materials. Individual work.
 
 ### Supplementary Topics in Mechanical Design
 
