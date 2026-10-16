@@ -1,0 +1,7 @@
+{
+  "name": "shape-lab-tests",
+  "private": true,
+  "description": "Browser checks for the Shape Efficiency Lab (headless Chrome via puppeteer-core).",
+  "scripts": { "test": "node smoke.js ../site/index.html out && node nowebgl.js ../site/index.html" },
+  "dependencies": { "puppeteer-core": "23.11.1" }
+}

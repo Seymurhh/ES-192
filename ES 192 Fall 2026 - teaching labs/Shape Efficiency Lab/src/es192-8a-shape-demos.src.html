@@ -1,0 +1,356 @@
+<title>Shape Efficiency Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=STIX+Two+Text:ital,wght@0,400;1,400&display=swap">
+<style>
+/* Layout: a materials-test bench. Rig (3D) top-left, microscope strip below it (grains + atoms + why);
+   right column = the experiment sheet (application, controls, result, governing equations) above a large live chart.
+   Below 1100px everything stacks. Presenter mode fills the screen and enlarges type. */
+:root{
+  --bg:#efeeeb; --panel:#ffffff; --sunk:#f6f5f2; --fg:#1c1b1f; --muted:#66636c; --line:#dad6d1;
+  --crimson:#a51c30; --steel:#2c6aa0; --amber:#c27409; --slate:#4a4d55; --good:#2e7d46; --warn:#b5651d;
+  --stage:#cfccc7; --tagbg:rgba(255,255,255,.93); --tagfg:#1c1b1f;
+  --f-display:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --f-math:"STIX Two Text","Cambria Math","Times New Roman",serif;
+  --fs:14px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121114; --panel:#1c1a1f; --sunk:#161519; --fg:#ecE9e6; --muted:#a4a0aa; --line:#34313a;
+  --crimson:#e0566b; --steel:#6fa8dc; --amber:#e39a3b; --slate:#b9bcc4; --good:#5fbf7f; --warn:#e39a3b;
+  --stage:#2b2a2e; --tagbg:rgba(28,26,31,.92); --tagfg:#ece9e6; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121114; --panel:#1c1a1f; --sunk:#161519; --fg:#ece9e6; --muted:#a4a0aa; --line:#34313a;
+  --crimson:#e0566b; --steel:#6fa8dc; --amber:#e39a3b; --slate:#b9bcc4; --good:#5fbf7f; --warn:#e39a3b;
+  --stage:#2b2a2e; --tagbg:rgba(28,26,31,.92); --tagfg:#ece9e6; color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:var(--fs);line-height:1.42}
+button{font-family:inherit}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--steel);outline-offset:2px}
+.app{height:100%;display:grid;grid-template-rows:auto minmax(0,1fr);padding-inline:16px;padding-block:0 12px;gap:10px}
+
+/* ---------- top bar ---------- */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);display:flex;align-items:center;gap:8px 18px;padding-block:8px 0;flex-wrap:wrap}
+.brand{display:flex;align-items:baseline;gap:10px;white-space:nowrap}
+.brand b{font:700 1.55rem/1 var(--f-display);letter-spacing:.01em}
+.brand span{font:500 .8rem var(--f-mono);color:var(--muted)}
+nav{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;min-width:0;flex:1}
+nav button{flex:none;font:600 1.02rem/1 var(--f-display);letter-spacing:.05em;text-transform:uppercase;border:0;background:transparent;color:var(--muted);padding:9px 11px 8px;border-bottom:3px solid transparent;cursor:pointer}
+nav button kbd{font:500 .7rem var(--f-mono);opacity:.65;margin-right:5px}
+nav button:hover{color:var(--fg)}
+nav button[aria-selected="true"]{color:var(--fg);border-bottom-color:var(--crimson)}
+.acts{display:flex;gap:6px;align-items:center}
+.ib{font:500 .8rem var(--f-body);border:1px solid var(--line);background:var(--panel);color:var(--fg);border-radius:5px;padding:6px 10px;cursor:pointer;white-space:nowrap}
+.ib:hover{border-color:var(--muted)}
+.ib[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.ib kbd{font:500 .68rem var(--f-mono);opacity:.6;margin-left:5px}
+
+/* ---------- main grid ---------- */
+.main{display:grid;min-height:0;gap:12px;grid-template-columns:minmax(0,1fr) clamp(360px,32vw,520px);grid-template-rows:minmax(0,1fr) minmax(236px,33%)}
+.stage{grid-column:1;grid-row:1;position:relative;border-radius:8px;overflow:hidden;background:var(--stage);min-height:280px}
+.micro{grid-column:1;grid-row:2}
+.rail{grid-column:2;grid-row:1}
+.chartp{grid-column:2;grid-row:2}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:8px;min-width:0;min-height:0}
+
+/* ---------- 3D stage ---------- */
+.stage canvas{display:block;width:100%;height:100%;touch-action:none}
+#tags{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.tag{position:absolute;transform:translate(-50%,-50%);font:600 .78rem/1.2 var(--f-body);background:var(--tagbg);color:var(--tagfg);padding:3px 7px;border-radius:3px;white-space:nowrap;box-shadow:0 1px 2px rgba(0,0,0,.14)}
+.tag.ok{color:var(--good)} .tag.bad{color:var(--crimson)}
+.tag.force{color:#fff;background:#a51c30;font-family:var(--f-mono);font-weight:500}
+.tag.sup{font-weight:500;font-size:.72rem;color:var(--muted)}
+.tag.dim{font:500 .74rem var(--f-mono);background:transparent;box-shadow:none;color:var(--tagfg);text-shadow:0 0 3px var(--stage),0 0 3px var(--stage),0 0 6px var(--stage)}
+.tag.sec{display:flex;align-items:center;gap:7px;font-weight:500;font-size:.72rem;padding:4px 8px 4px 5px}
+.tag.sec svg{width:26px;height:26px;flex:none}
+.tag.sec b{display:block;font-weight:600;font-size:.78rem}
+.tag.sec i{font-family:var(--f-math);font-size:.9rem}
+.zoom{position:absolute;width:46px;height:46px;margin:-23px 0 0 -23px;border:2px solid #a51c30;border-radius:50%;box-shadow:0 0 0 2px rgba(255,255,255,.7);pointer-events:none}
+.zoom::after{content:"";position:absolute;left:50%;top:100%;width:2px;height:22px;background:#a51c30;transform:translateX(-50%)}
+.zoom span{position:absolute;top:calc(100% + 22px);left:50%;transform:translateX(-50%);font:600 .68rem var(--f-body);letter-spacing:.06em;text-transform:uppercase;color:#fff;background:#a51c30;padding:2px 6px;border-radius:3px;white-space:nowrap}
+@media (prefers-reduced-motion: no-preference){.zoom{animation:pulse 2.4s ease-in-out infinite}}
+@keyframes pulse{50%{box-shadow:0 0 0 7px rgba(165,28,48,.18)}}
+.tools{position:absolute;left:10px;top:10px;display:flex;gap:6px;flex-wrap:wrap;max-width:calc(100% - 20px)}
+.tools button{font:600 .76rem var(--f-body);background:rgba(255,255,255,.9);color:#1c1b1f;border:1px solid rgba(0,0,0,.08);border-radius:4px;padding:5px 9px;cursor:pointer}
+.tools button[aria-pressed="true"]{background:#1c1b1f;color:#fff}
+.tools kbd{font:500 .66rem var(--f-mono);opacity:.55;margin-left:4px}
+.legend{position:absolute;left:10px;bottom:10px;background:rgba(255,255,255,.92);color:#1c1b1f;border-radius:4px;padding:6px 9px;font-size:.72rem;min-width:190px}
+.legend .bar{height:9px;border-radius:2px;margin:4px 0 2px;background:linear-gradient(90deg,#2b4c7e,#2a9d8f 35%,#e9c46a 65%,#e76f51 92%,#b5172f)}
+.legend .ends{display:flex;justify-content:space-between;color:#55525a}
+.hint{position:absolute;right:10px;bottom:8px;font-size:.7rem;color:#55525a;pointer-events:none}
+.stagechart{position:absolute;inset:0;background:var(--panel);padding:14px 16px 10px;display:flex;flex-direction:column;gap:8px}
+#fallback{position:absolute;inset:0;display:grid;place-items:center;padding:24px;text-align:center;color:var(--muted)}
+
+/* ---------- rail: the experiment sheet ---------- */
+.rail{overflow:auto;padding:12px 16px;display:flex;flex-direction:column;gap:10px}
+.app-card{display:grid;gap:1px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.app-card .k{font:600 .7rem var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--crimson)}
+.app-card .t{font:600 1.02rem/1.25 var(--f-body)}
+.app-card .d{font:400 .8rem/1.35 var(--f-body);color:var(--muted)}
+.q{font:600 1.4rem/1.08 var(--f-display);margin:0;text-wrap:balance}
+.ctl{display:grid;gap:4px}
+.ctl label{display:flex;justify-content:space-between;gap:10px;font-size:.72rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.ctl .sym{font:italic 400 1rem/1 var(--f-math);text-transform:none;letter-spacing:0;color:var(--fg);margin-left:2px}
+.ctl output{font:500 .84rem var(--f-mono);letter-spacing:0;text-transform:none;color:var(--fg)}
+.row{display:flex;gap:8px;align-items:center}
+.row input{flex:1;min-width:0}
+input[type=range]{width:100%;accent-color:var(--crimson);margin:4px 0}
+.play{flex:none;width:36px;height:30px;border-radius:5px;border:0;background:var(--crimson);color:#fff;cursor:pointer;font-size:.8rem;line-height:1}
+.seg{display:flex;gap:3px;background:var(--sunk);border:1px solid var(--line);border-radius:6px;padding:3px}
+.seg button{flex:1;font:500 .82rem var(--f-body);padding:5px 8px;border:0;background:transparent;color:var(--muted);border-radius:4px;cursor:pointer;white-space:nowrap}
+.seg button[aria-pressed="true"]{background:var(--panel);color:var(--fg);box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.result{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.result .big{font:700 2.2rem/1 var(--f-display);color:var(--crimson);font-variant-numeric:tabular-nums}
+.result .big span{color:var(--muted);font-weight:500;font-size:1.3rem}
+.result small{flex-basis:100%;font:500 .8rem var(--f-body);color:var(--muted)}
+.eqs{display:grid;gap:0;background:var(--sunk);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+.eqs .h{font:600 .68rem var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:2px 0 2px}
+.eqs .dl{font:400 .76rem/1.35 var(--f-body);color:var(--muted);padding:0 0 5px}
+.eq{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:baseline;gap:1px 10px;padding:4px 0;border-top:1px dashed var(--line)}
+.eq .f{font:400 1rem/1.3 var(--f-math)}
+.eq .f i{font-style:italic}
+.eq .f sub,.eq .f sup{font-size:.7em}
+.eq .src{font:500 .66rem var(--f-mono);color:var(--muted);white-space:nowrap}
+.eq .v{grid-column:1/-1;font:400 .78rem var(--f-mono);color:var(--muted)}
+.eq .v b{color:var(--fg);font-weight:500}
+
+/* ---------- chart panel ---------- */
+.chartp{display:flex;flex-direction:column;padding:10px 12px 8px;gap:6px}
+.ph{display:flex;align-items:center;gap:8px;justify-content:space-between;flex-wrap:wrap}
+.ph h2{margin:0;font:600 .72rem var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.ph .seg{padding:2px}
+.ph .seg button{font-size:.76rem;padding:3px 8px}
+.chartbox{flex:1;min-height:130px;position:relative}
+.chartbox svg{position:absolute;inset:0;width:100%;height:100%;display:block;overflow:visible}
+svg text{font-family:var(--f-body);font-size:11.5px;fill:var(--muted)}
+svg .t-fg{fill:var(--fg)}
+svg .t-math{font-family:var(--f-math);font-style:italic;font-size:13px}
+.cleg{display:flex;flex-wrap:wrap;gap:2px 12px;font-size:.72rem;line-height:1.3;color:var(--muted)}
+.cleg i{display:inline-block;width:16px;height:3px;border-radius:2px;vertical-align:middle;margin-right:5px}
+
+/* ---------- microscope strip ---------- */
+.micro{display:grid;grid-template-rows:auto minmax(0,1fr);padding:10px 12px;gap:8px}
+.mh{display:flex;align-items:center;gap:8px 14px;flex-wrap:wrap}
+.mh h2{margin:0;font:600 1.12rem/1.1 var(--f-display);letter-spacing:.02em}
+.mh h2 small{display:block;font:500 .76rem var(--f-body);color:var(--muted);margin-top:2px;letter-spacing:0}
+.steps{display:flex;gap:0;margin-left:auto;font:600 .7rem var(--f-body);letter-spacing:.06em;text-transform:uppercase}
+.steps span{padding:4px 9px;color:var(--muted);border:1px solid var(--line);margin-left:-1px;background:var(--panel);white-space:nowrap}
+.steps span:first-child{border-radius:4px 0 0 4px;margin-left:0}.steps span:last-child{border-radius:0 4px 4px 0}
+.steps span.done{color:var(--fg)}
+.steps span.on{background:var(--crimson);border-color:var(--crimson);color:#fff}
+.mbody{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(240px,1.05fr);gap:10px;min-height:0}
+.fig{margin:0;display:grid;grid-template-rows:auto minmax(0,1fr);gap:4px;min-width:0;min-height:0}
+.fig figcaption{font:600 .68rem var(--f-body);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.scope{position:relative;border-radius:6px;overflow:hidden;min-height:150px;background:#e9e6df}
+.scope.atoms{background:#14161b}
+.scope canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.scope .cap{position:absolute;left:8px;top:7px;font:600 .66rem var(--f-body);letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;border-radius:3px;background:rgba(0,0,0,.55);color:#fff}
+.why{display:flex;flex-direction:column;gap:6px;min-width:0;overflow:auto;padding-right:2px}
+.why .hd{font:600 1.02rem/1.25 var(--f-body);text-wrap:balance}
+.why p{margin:0;font-size:.86rem;line-height:1.45}
+.why .ms{font-size:.78rem;color:var(--muted);border-top:1px solid var(--line);padding-top:6px;margin-top:auto}
+.why .ms b{color:var(--fg);font-weight:600}
+
+/* ---------- sources sheet ---------- */
+.sheet{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.4);display:grid;place-items:center;padding:16px}
+.sheet .box{background:var(--panel);color:var(--fg);border-radius:8px;max-width:720px;width:100%;max-height:85vh;overflow:auto;padding:18px 22px;border:1px solid var(--line)}
+.sheet h3{margin:0 0 8px;font:700 1.4rem var(--f-display)}
+.sheet h4{margin:14px 0 4px;font:600 .74rem var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.sheet p,.sheet li{font-size:.86rem;line-height:1.5;max-width:70ch}
+.sheet ul{margin:0;padding-left:18px}
+
+/* ---------- presenter + narrow ---------- */
+body.present{--fs:16px}
+body.present .q{font-size:1.9rem}
+body.present .result .big{font-size:3rem}
+body.present .tag{font-size:.9rem}
+body.present .why p{font-size:.98rem}
+body.present .why .hd{font-size:1.18rem}
+body.present svg text{font-size:13.5px}
+@media (max-width:1100px){
+  .app{height:auto;display:block}
+  .bar{padding-bottom:6px}
+  .main{grid-template-columns:minmax(0,1fr);grid-template-rows:none}
+  .stage,.micro,.rail,.chartp{grid-column:1;grid-row:auto}
+  .rail{order:2}.micro{order:3}.chartp{order:4}
+  .stage{aspect-ratio:16/10;max-width:100%;min-height:0}
+  .rail{overflow:visible}
+  .chartp{min-height:320px}
+  .mbody{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .why{grid-column:1/-1}
+  .steps{margin-left:0}
+}
+@media (max-width:560px){
+  .brand span{display:none}
+  .mbody{grid-template-columns:minmax(0,1fr)}
+  .stage{aspect-ratio:4/5}
+  .acts .ib kbd{display:none}
+}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<div class="app">
+<header class="bar">
+  <div class="brand"><b>Shape Efficiency Lab</b><span>ES 192 · Week 8</span></div>
+  <nav role="tablist" aria-label="Experiments">
+    <button role="tab" aria-selected="true" data-tab="column"><kbd>1</kbd>Columns</button>
+    <button role="tab" aria-selected="false" data-tab="wall"><kbd>2</kbd>Thin walls</button>
+    <button role="tab" aria-selected="false" data-tab="cells"><kbd>3</kbd>Cells</button>
+    <button role="tab" aria-selected="false" data-tab="lattice"><kbd>4</kbd>Lattices</button>
+    <button role="tab" aria-selected="false" data-tab="sheet"><kbd>5</kbd>Corrugation</button>
+  </nav>
+  <div class="acts">
+    <button class="ib" type="button" id="b-src">Sources</button>
+    <button class="ib" type="button" id="b-theme" aria-label="Switch light or dark">Theme</button>
+    <button class="ib" type="button" id="b-present" aria-pressed="false">Present<kbd>P</kbd></button>
+  </div>
+</header>
+
+<main class="main">
+  <!-- 3D rig -->
+  <section class="stage" id="stage" aria-label="3D test rig">
+    <canvas id="cv"></canvas>
+    <div id="tags"></div>
+    <div class="zoom" id="zoom" hidden title="The microscope below zooms in here"></div>
+    <div class="tools">
+      <button type="button" id="b-strain" aria-pressed="false">Strain colours<kbd>S</kbd></button>
+      <button type="button" id="b-labels" aria-pressed="true">Labels<kbd>L</kbd></button>
+      <button type="button" id="b-new">New specimen<kbd>N</kbd></button>
+      <button type="button" id="b-reset">Reset view<kbd>R</kbd></button>
+    </div>
+    <div class="legend" id="legend" hidden><span id="lg-title">Strain</span><div class="bar"></div><div class="ends"><span id="lg-lo">0</span><span id="lg-hi">yield</span></div></div>
+    <div class="hint" id="hint">drag to turn · scroll to zoom</div>
+    <div class="stagechart" id="stagechart" hidden>
+      <div class="ph"><h2 id="sc-title">Chart</h2><button class="ib" type="button" id="b-shrink">Back to the rig</button></div>
+      <div class="chartbox"><svg id="sc-svg" role="img" aria-label="Enlarged chart"></svg></div>
+      <div class="cleg" id="sc-leg"></div>
+    </div>
+  </section>
+
+  <!-- microscope -->
+  <section class="micro panel" aria-label="Inside the material">
+    <div class="mh">
+      <h2 id="m-title">Inside the steel<small id="m-where"></small></h2>
+      <div class="seg" id="m-pick" role="group" aria-label="Specimen to zoom into"></div>
+      <div class="steps" id="m-steps"></div>
+    </div>
+    <div class="mbody">
+      <figure class="fig"><figcaption id="mg-cap">Grains</figcaption><div class="scope grains"><canvas id="mg" aria-label="Grain structure"></canvas></div></figure>
+      <figure class="fig"><figcaption id="ma-cap">Atoms</figcaption><div class="scope atoms"><canvas id="ma" aria-label="Atoms"></canvas></div></figure>
+      <div class="why" aria-live="polite"><div class="hd" id="w-hd"></div><p id="w-p"></p><div class="ms" id="w-ms"></div></div>
+    </div>
+  </section>
+
+  <!-- experiment sheet -->
+  <aside class="rail panel">
+    <!-- 1 column -->
+    <div class="app-card" data-panel="column"><span class="k">Application · steel props</span><span class="t">Steel tube 60.3 × 2.9 mm vs a solid bar, same mass</span></div>
+    <p class="q" data-panel="column">Same steel, same mass. Which one buckles first?</p>
+    <div class="ctl" data-panel="column"><label for="c-F"><span>Load <span class="sym">F</span></span> <output id="o-cF"></output></label><div class="row"><input id="c-F" type="range" min="0" max="1" step="0.001" value="0.25"><button class="play" type="button" data-for="c-F" aria-label="Play load">▶</button></div></div>
+    <div class="ctl" data-panel="column"><label for="c-L"><span>Length <span class="sym">L</span></span> <output id="o-cL"></output></label><input id="c-L" type="range" min="1" max="3" step="0.05" value="2"></div>
+    <div class="result" data-panel="column" id="c-res"></div>
+    <div class="eqs" data-panel="column"><div class="h">Governing equations</div><div class="dl">S355 steel, E = 210 GPa, σ<sub>y</sub> = 355 MPa. Both 523 mm² of steel (4.1 kg per metre). Pinned at both ends.</div>
+      <div class="eq"><span class="f"><i>F</i><sub>c</sub> = π² <i>E I</i> / <i>L</i>²</span><span class="src">Eq 11.14 · p.389</span><span class="v" id="eq-c1"></span></div>
+      <div class="eq"><span class="f"><i>I</i><sub>bar</sub> = π<i>r</i>⁴/4 &nbsp; <i>I</i><sub>tube</sub> ≈ π<i>r</i>³<i>t</i></span><span class="src">Table 11.2</span><span class="v" id="eq-c2"></span></div>
+      <div class="eq"><span class="f">φ = 12 <i>I</i> / <i>A</i>² &nbsp;→&nbsp; <i>F</i><sub>c,tube</sub>/<i>F</i><sub>c,bar</sub> = <i>r</i>/<i>t</i></span><span class="src">Eq 11.3 · p.380</span><span class="v" id="eq-c3"></span></div>
+      <div class="eq"><span class="f">σ = <i>F</i>/<i>A</i> + <i>F</i> δ <i>c</i> / <i>I</i> &nbsp; (yield when σ = σ<sub>y</sub>)</span><span class="src">bow δ = δ₀/(1 − <i>F</i>/<i>F</i><sub>c</sub>)</span><span class="v" id="eq-c4"></span></div>
+    </div>
+
+    <!-- 2 wall -->
+    <div class="app-card" data-panel="wall"><span class="k">Application · bike-frame tube</span><span class="t">Aluminium 6061-T6 tube, clamped at one end</span></div>
+    <p class="q" data-panel="wall">Thinner wall, same metal. Stronger forever?</p>
+    <div class="ctl" data-panel="wall"><label for="w-k"><span>Radius / wall thickness <span class="sym">r/t</span></span> <output id="o-wk"></output></label><input id="w-k" type="range" min="0" max="1" step="0.001" value="0.2"></div>
+    <div class="ctl" data-panel="wall"><label for="w-F"><span>Tip load <span class="sym">F</span></span> <output id="o-wF"></output></label><div class="row"><input id="w-F" type="range" min="0" max="1200" step="5" value="300"><button class="play" type="button" data-for="w-F" aria-label="Play load">▶</button></div></div>
+    <div class="result" data-panel="wall" id="w-res"></div>
+    <div class="eqs" data-panel="wall"><div class="h">Governing equations</div><div class="dl">E = 69 GPa, σ<sub>y</sub> = 250 MPa. 0.5 m long. Always 150 mm² of metal: a wider tube means a thinner wall.</div>
+      <div class="eq"><span class="f"><i>M</i> = <i>F L</i> &nbsp; σ = <i>M</i>/<i>Z</i>, &nbsp;<i>Z</i> ≈ π<i>r</i>²<i>t</i></span><span class="src">Table 11.2</span><span class="v" id="eq-w1"></span></div>
+      <div class="eq"><span class="f">Yield: <i>M</i><sub>y</sub> = σ<sub>y</sub> <i>Z</i></span><span class="src">grows with r/t</span><span class="v" id="eq-w2"></span></div>
+      <div class="eq"><span class="f">Wall kinks: σ<sub>k</sub> ≈ 0.15 <i>E t</i>/<i>r</i></span><span class="src">teaching model</span><span class="v" id="eq-w3"></span></div>
+      <div class="eq"><span class="f">φ<sub>max</sub> ≈ 2.3 (<i>E</i>/σ<sub>f</sub>)<sup>½</sup></span><span class="src">Eq 11.15a · p.393</span><span class="v" id="eq-w4"></span></div>
+    </div>
+
+    <!-- 3 cells -->
+    <div class="app-card" data-panel="cells"><span class="k">Application · wood and foams</span><span class="t">One cell-wall solid: a solid bar, wood-like cells, or a foam</span></div>
+    <p class="q" data-panel="cells">Same mass, spread into cells. Stiffer? Stronger?</p>
+    <div class="ctl" data-panel="cells"><div class="seg" id="m-type" role="group" aria-label="Cell type"><button type="button" data-t="prism" aria-pressed="true">Aligned cells (wood)</button><button type="button" data-t="foam" aria-pressed="false">Foam</button></div></div>
+    <div class="ctl" data-panel="cells"><label for="m-r"><span>Relative density <span class="sym">ρ/ρ<sub>s</sub></span></span> <output id="o-mr"></output></label><input id="m-r" type="range" min="0.1" max="1" step="0.01" value="0.3"></div>
+    <div class="ctl" data-panel="cells"><label for="m-P"><span>Tip load <span class="sym">F</span></span> <output id="o-mP"></output></label><div class="row"><input id="m-P" type="range" min="0" max="2" step="0.005" value="0.5"><button class="play" type="button" data-for="m-P" aria-label="Play load">▶</button></div></div>
+    <div class="result" data-panel="cells" id="m-res"></div>
+    <div class="eqs" data-panel="cells"><div class="h">Governing equations</div><div class="dl">Cell wall E<sub>s</sub> ≈ 35 GPa, ρ<sub>s</sub> ≈ 1500 kg/m³. Equal-mass cantilevers, 0.8 m long.</div>
+      <div class="eq"><span class="f">δ = <i>F L</i>³ / 3<i>E I</i>, &nbsp; same mass: <i>b</i> = <i>b</i><sub>0</sub>(ρ<sub>s</sub>/ρ)<sup>½</sup></span><span class="src">Table B.3</span><span class="v" id="eq-m1"></span></div>
+      <div class="eq"><span class="f">Aligned: <i>E</i> = (ρ/ρ<sub>s</sub>) <i>E</i><sub>s</sub>, &nbsp; ψ = ρ<sub>s</sub>/ρ</span><span class="src">Eq 11.38 · p.406</span><span class="v" id="eq-m2"></span></div>
+      <div class="eq"><span class="f">Foam: <i>E</i> = (ρ/ρ<sub>s</sub>)² <i>E</i><sub>s</sub>, &nbsp; ψ = 1</span><span class="src">Eq 13.18 · p.470</span><span class="v" id="eq-m3"></span></div>
+      <div class="eq"><span class="f">Foam strength: σ<sub>pl</sub> = 0.3 (ρ/ρ<sub>s</sub>)<sup>3/2</sup> σ<sub>s</sub></span><span class="src">Eq 13.20 · p.471</span><span class="v" id="eq-m4"></span></div>
+    </div>
+
+    <!-- 4 lattice -->
+    <div class="app-card" data-panel="lattice"><span class="k">Application · printed implants and brackets</span><span class="t">Two 3D-printed Ti-6Al-4V lattices, same density</span></div>
+    <p class="q" data-panel="lattice">Same struts, same density. Why is one far stiffer?</p>
+    <div class="ctl" data-panel="lattice"><label for="l-r"><span>Relative density <span class="sym">ρ/ρ<sub>s</sub></span></span> <output id="o-lr"></output></label><input id="l-r" type="range" min="0.03" max="0.3" step="0.005" value="0.1"></div>
+    <div class="ctl" data-panel="lattice"><label for="l-P"><span>Applied stress <span class="sym">σ</span></span> <output id="o-lP"></output></label><div class="row"><input id="l-P" type="range" min="0" max="1" step="0.001" value="0.25"><button class="play" type="button" data-for="l-P" aria-label="Play load">▶</button></div></div>
+    <div class="result" data-panel="lattice" id="l-res"></div>
+    <div class="eqs" data-panel="lattice"><div class="h">Governing equations</div><div class="dl">Solid: E<sub>s</sub> = 115 GPa, σ<sub>s</sub> ≈ 1000 MPa (as printed), ρ<sub>s</sub> = 4430 kg/m³. Squeezed between press platens.</div>
+      <div class="eq"><span class="f">Maxwell: <i>M</i> = <i>b</i> − 3<i>j</i> + 6</span><span class="src">Eq 13.3 · p.453</span><span class="v" id="eq-l1"></span></div>
+      <div class="eq"><span class="f">Stretch: <i>E</i>/<i>E</i><sub>s</sub> ≈ ⅓ ρ/ρ<sub>s</sub>, &nbsp; σ/σ<sub>s</sub> ≈ ⅓ ρ/ρ<sub>s</sub></span><span class="src">Eqs 13.27–28 · p.473</span><span class="v" id="eq-l2"></span></div>
+      <div class="eq"><span class="f">Bend: <i>E</i>/<i>E</i><sub>s</sub> ≈ (ρ/ρ<sub>s</sub>)², &nbsp; σ/σ<sub>s</sub> ≈ 0.3 (ρ/ρ<sub>s</sub>)<sup>3/2</sup></span><span class="src">Eqs 13.18, 13.20</span><span class="v" id="eq-l3"></span></div>
+    </div>
+
+    <!-- 5 sheet -->
+    <div class="app-card" data-panel="sheet"><span class="k">Application · roofing and container walls</span><span class="t">Galvanized steel sheet, 2 mm thick, flat vs corrugated</span></div>
+    <p class="q" data-panel="sheet">Same sheet. How much does a wave help?</p>
+    <div class="ctl" data-panel="sheet"><label for="s-a"><span>Wave amplitude / thickness <span class="sym">a/t</span></span> <output id="o-sa"></output></label><input id="s-a" type="range" min="0" max="5" step="0.05" value="3"></div>
+    <div class="ctl" data-panel="sheet"><label for="s-P"><span>Tip load <span class="sym">F</span></span> <output id="o-sP"></output></label><div class="row"><input id="s-P" type="range" min="0" max="1" step="0.001" value="0.22"><button class="play" type="button" data-for="s-P" aria-label="Play load">▶</button></div></div>
+    <div class="result" data-panel="sheet" id="s-res"></div>
+    <div class="eqs" data-panel="sheet"><div class="h">Governing equations</div><div class="dl">S280GD steel, E = 210 GPa, σ<sub>y</sub> = 280 MPa. Clamped along one edge; 0.7 m long, 0.3 m wide.</div>
+      <div class="eq"><span class="f"><i>I</i><sub>0</sub> = <i>W t</i>³/12, &nbsp; δ = <i>F L</i>³ / 3<i>E I</i></span><span class="src">Table B.3</span><span class="v" id="eq-s1"></span></div>
+      <div class="eq"><span class="f">Stiffness: φ<sub>e</sub> = <i>I</i>/<i>I</i><sub>0</sub> ≈ (2<i>a</i> + <i>t</i>)² / <i>t</i>²</span><span class="src">Eq 12.8 · p.436</span><span class="v" id="eq-s2"></span></div>
+      <div class="eq"><span class="f">Strength: φ<sub>f</sub> = <i>Z</i>/<i>Z</i><sub>0</sub> ≈ (2<i>a</i> + <i>t</i>) / <i>t</i></span><span class="src">Eq 12.9 · p.436</span><span class="v" id="eq-s3"></span></div>
+    </div>
+  </aside>
+
+  <!-- live chart -->
+  <section class="chartp panel" aria-label="Live chart">
+    <div class="ph">
+      <h2 id="ch-title">Load vs deflection</h2>
+      <div class="row">
+        <div class="seg" id="ch-pick" role="group" aria-label="Chart"><button type="button" data-c="test" aria-pressed="true">Test curve</button><button type="button" data-c="design" aria-pressed="false">Design chart</button></div>
+        <button class="ib" type="button" id="b-grow" title="Show the chart large">Enlarge</button>
+      </div>
+    </div>
+    <div class="chartbox"><svg id="ch-svg" role="img" aria-label="Live chart"></svg></div>
+    <div class="cleg" id="ch-leg"></div>
+  </section>
+</main>
+</div>
+
+<div class="sheet" id="sources" hidden role="dialog" aria-modal="true" aria-labelledby="src-h">
+  <div class="box">
+    <h3 id="src-h">Sources and models</h3>
+    <p>Equations and page numbers refer to Ashby, <i>Materials Selection in Mechanical Design</i>, 6th edition (Elsevier, 2025).</p>
+    <h4>Columns</h4>
+    <ul><li>Euler load F<sub>c</sub> = n²π²EI/L² (Eq 11.14, p.389), pinned ends n = 1. Shape factor φ = 12I/A² (Eq 11.3, p.380); tube 3r/πt, solid 3/π (Table 11.3), so the load ratio is r/t.</li>
+    <li>Real columns start slightly bent. The demo uses a starting bow of L/1000 that grows as 1/(1 − F/F<sub>c</sub>); first yield is where axial plus bending stress reaches σ<sub>y</sub> (the Perry–Robertson idea). After first yield the column collapses.</li>
+    <li>Sections: EN 10219 circular hollow section 60.3 × 2.9 mm; solid bar of equal area 25.8 mm. S355: E = 210 GPa, σ<sub>y</sub> = 355 MPa.</li></ul>
+    <h4>Thin walls</h4>
+    <ul><li>Aluminium 6061-T6, E = 69 GPa, σ<sub>y</sub> = 250 MPa, area 150 mm². The wall-kink stress 0.145 E t/r is a teaching model chosen so yield and kinking meet at Ashby's limit φ<sub>max</sub> ≈ 2.3(E/σ<sub>f</sub>)<sup>½</sup> (Eq 11.15a, p.393).</li></ul>
+    <h4>Cells</h4>
+    <ul><li>Aligned cells ψ = ρ<sub>s</sub>/ρ (Eq 11.38, p.406). Foam E = (ρ/ρ<sub>s</sub>)²E<sub>s</sub> (Eq 13.18, p.470) and σ<sub>pl</sub> = 0.3(ρ/ρ<sub>s</sub>)<sup>3/2</sup>σ<sub>s</sub> (Eq 13.20, p.471). Aligned-cell strength σ = (ρ/ρ<sub>s</sub>)σ<sub>s</sub>.</li>
+    <li>Cell-wall solid ≈ 1500 kg/m³, 35 GPa, read from the cellulose bubble on Fig 13.34. Loads are given as a fraction of the load that breaks the solid bar. Wood is about half as strong along the grain in compression as in tension, so the squeezed face fails first.</li></ul>
+    <h4>Lattices</h4>
+    <ul><li>Octet truss (Fig 13.21): Maxwell M ≥ 0 (Eq 13.3, p.453), E ≈ ⅓(ρ/ρ<sub>s</sub>)E<sub>s</sub> (Eq 13.27, p.473), collapse σ ≈ ⅓(ρ/ρ<sub>s</sub>)σ<sub>s</sub> (Eq 13.28, p.474) or strut buckling 0.2(ρ/ρ<sub>s</sub>)²E<sub>s</sub> (Eq 13.29), whichever is lower.</li>
+    <li>Open (body-centred) lattice: M &lt; 0, E ≈ (ρ/ρ<sub>s</sub>)²E<sub>s</sub>, σ<sub>pl</sub> ≈ 0.3(ρ/ρ<sub>s</sub>)<sup>3/2</sup>σ<sub>s</sub>. Ti-6Al-4V as printed: E<sub>s</sub> = 115 GPa, σ<sub>s</sub> ≈ 1000 MPa (typical laser powder-bed values).</li>
+    <li>Squash in the 3D view is drawn 8× larger than the elastic strain; the ratio between the two lattices is true.</li></ul>
+    <h4>Corrugation</h4>
+    <ul><li>φ<sub>e</sub> = (2a+t)²/t² and φ<sub>f</sub> = (2a+t)/t (Eqs 12.8–12.9, p.436) are ideal values for a section through the wave peaks; real gains are a little lower, and deep corrugations can also buckle locally at the crest. S280GD galvanized sheet, σ<sub>y</sub> = 280 MPa.</li></ul>
+    <h4>Microscope views</h4>
+    <ul><li>Grain and atom views are drawings of the mechanisms, not simulations. Strain is exaggerated so it can be seen. Atom views show one slip plane side-on; the real plane sits at about 45° to the load, where the shear stress on it is largest.</li>
+    <li>Mechanisms: slip on {110} planes in ferrite and dislocation pinning by carbon (steel); {111} slip and Mg–Si (β″) precipitates in 6061-T6; α′ martensite, partly melted powder and pores in printed Ti-6Al-4V; cellulose chains joined by hydrogen bonds in wood cell walls; zinc-coating cracking on galvanized sheet.</li></ul>
+    <p style="margin-top:14px"><button class="ib" type="button" id="b-src-close">Close</button></p>
+  </div>
+</div>
+
+<!--THREE-->
+<!--APP-->
