@@ -256,7 +256,7 @@ body.present svg text{font-size:13.5px}
       <div class="eq"><span class="f"><i>F</i><sub>c</sub> = π² <i>E I</i> / <i>L</i>²</span><span class="src">Eq 11.14 · p.389</span><span class="v" id="eq-c1"></span></div>
       <div class="eq"><span class="f"><i>I</i><sub>bar</sub> = π<i>r</i>⁴/4 &nbsp; <i>I</i><sub>tube</sub> ≈ π<i>r</i>³<i>t</i></span><span class="src">Table 11.2</span><span class="v" id="eq-c2"></span></div>
       <div class="eq"><span class="f">φ = 12 <i>I</i> / <i>A</i>² &nbsp;→&nbsp; <i>F</i><sub>c,tube</sub>/<i>F</i><sub>c,bar</sub> = <i>r</i>/<i>t</i></span><span class="src">Eq 11.3 · p.380</span><span class="v" id="eq-c3"></span></div>
-      <div class="eq"><span class="f">σ = <i>F</i>/<i>A</i> + <i>F</i> δ <i>c</i> / <i>I</i> &nbsp; (yield when σ = σ<sub>y</sub>)</span><span class="src">bow δ = δ₀/(1 − <i>F</i>/<i>F</i><sub>c</sub>)</span><span class="v" id="eq-c4"></span></div>
+      <div class="eq"><span class="f">Real column: <i>N</i><sub>b</sub> = χ <i>A f</i><sub>y</sub>, &nbsp;λ̄ = (<i>A f</i><sub>y</sub>/<i>F</i><sub>c</sub>)<sup>½</sup></span><span class="src">EN 1993-1-1 §6.3.1</span><span class="v" id="eq-c4"></span></div>
     </div>
 
     <!-- 2 wall -->
@@ -267,8 +267,8 @@ body.present svg text{font-size:13.5px}
     <div class="result" data-panel="wall" id="w-res"></div>
     <div class="eqs" data-panel="wall"><div class="h">Governing equations</div><div class="dl">E = 69 GPa, σ<sub>y</sub> = 250 MPa. 0.5 m long. Always 150 mm² of metal: a wider tube means a thinner wall.</div>
       <div class="eq"><span class="f"><i>M</i> = <i>F L</i> &nbsp; σ = <i>M</i>/<i>Z</i>, &nbsp;<i>Z</i> ≈ π<i>r</i>²<i>t</i></span><span class="src">Table 11.2</span><span class="v" id="eq-w1"></span></div>
-      <div class="eq"><span class="f">Yield: <i>M</i><sub>y</sub> = σ<sub>y</sub> <i>Z</i></span><span class="src">grows with r/t</span><span class="v" id="eq-w2"></span></div>
-      <div class="eq"><span class="f">Wall kinks: σ<sub>k</sub> ≈ 0.15 <i>E t</i>/<i>r</i></span><span class="src">teaching model</span><span class="v" id="eq-w3"></span></div>
+      <div class="eq"><span class="f">Yield: <i>M</i><sub>y</sub> = σ<sub>y</sub><i>Z</i>; hinge: <i>M</i><sub>p</sub> = (4/π)<i>M</i><sub>y</sub></span><span class="src">thin tube</span><span class="v" id="eq-w2"></span></div>
+      <div class="eq"><span class="f">Wall kinks: σ<sub>k</sub> ≈ 0.18 <i>E t</i>/<i>r</i></span><span class="src">0.6<i>Et</i>/<i>r</i> × 0.3 knock-down</span><span class="v" id="eq-w3"></span></div>
       <div class="eq"><span class="f">φ<sub>max</sub> ≈ 2.3 (<i>E</i>/σ<sub>f</sub>)<sup>½</sup></span><span class="src">Eq 11.15a · p.393</span><span class="v" id="eq-w4"></span></div>
     </div>
 
@@ -277,13 +277,13 @@ body.present svg text{font-size:13.5px}
     <p class="q" data-panel="cells">Same mass, spread into cells. Stiffer? Stronger?</p>
     <div class="ctl" data-panel="cells"><div class="seg" id="m-type" role="group" aria-label="Cell type"><button type="button" data-t="prism" aria-pressed="true">Aligned cells (wood)</button><button type="button" data-t="foam" aria-pressed="false">Foam</button></div></div>
     <div class="ctl" data-panel="cells"><label for="m-r"><span>Relative density <span class="sym">ρ/ρ<sub>s</sub></span></span> <output id="o-mr"></output></label><input id="m-r" type="range" min="0.1" max="1" step="0.01" value="0.3"></div>
-    <div class="ctl" data-panel="cells"><label for="m-P"><span>Tip load <span class="sym">F</span></span> <output id="o-mP"></output></label><div class="row"><input id="m-P" type="range" min="0" max="2" step="0.005" value="0.5"><button class="play" type="button" data-for="m-P" aria-label="Play load">▶</button></div></div>
+    <div class="ctl" data-panel="cells"><label for="m-P"><span>Tip load <span class="sym">F</span></span> <output id="o-mP"></output></label><div class="row"><input id="m-P" type="range" min="0" max="3.5" step="0.005" value="0.4"><button class="play" type="button" data-for="m-P" aria-label="Play load">▶</button></div></div>
     <div class="result" data-panel="cells" id="m-res"></div>
     <div class="eqs" data-panel="cells"><div class="h">Governing equations</div><div class="dl">Cell wall E<sub>s</sub> ≈ 35 GPa, ρ<sub>s</sub> ≈ 1500 kg/m³. Equal-mass cantilevers, 0.8 m long.</div>
       <div class="eq"><span class="f">δ = <i>F L</i>³ / 3<i>E I</i>, &nbsp; same mass: <i>b</i> = <i>b</i><sub>0</sub>(ρ<sub>s</sub>/ρ)<sup>½</sup></span><span class="src">Table B.3</span><span class="v" id="eq-m1"></span></div>
       <div class="eq"><span class="f">Aligned: <i>E</i> = (ρ/ρ<sub>s</sub>) <i>E</i><sub>s</sub>, &nbsp; ψ = ρ<sub>s</sub>/ρ</span><span class="src">Eq 11.38 · p.406</span><span class="v" id="eq-m2"></span></div>
-      <div class="eq"><span class="f">Foam: <i>E</i> = (ρ/ρ<sub>s</sub>)² <i>E</i><sub>s</sub>, &nbsp; ψ = 1</span><span class="src">Eq 13.18 · p.470</span><span class="v" id="eq-m3"></span></div>
-      <div class="eq"><span class="f">Foam strength: σ<sub>pl</sub> = 0.3 (ρ/ρ<sub>s</sub>)<sup>3/2</sup> σ<sub>s</sub></span><span class="src">Eq 13.20 · p.471</span><span class="v" id="eq-m4"></span></div>
+      <div class="eq"><span class="f">Foam: <i>E</i> = (ρ/ρ<sub>s</sub>)²<i>E</i><sub>s</sub>, &nbsp;σ<sub>pl</sub> = 0.3(ρ/ρ<sub>s</sub>)<sup>3/2</sup>σ<sub>s</sub></span><span class="src">Eqs 13.18, 13.20</span><span class="v" id="eq-m3"></span></div>
+      <div class="eq"><span class="f">Wood creases first: σ<sub>c</sub> / σ<sub>MOR</sub></span><span class="src">Sitka spruce, USDA Wood Handbook</span><span class="v" id="eq-m4"></span></div>
     </div>
 
     <!-- 4 lattice -->
@@ -332,19 +332,20 @@ body.present svg text{font-size:13.5px}
     <p>Equations and page numbers refer to Ashby, <i>Materials Selection in Mechanical Design</i>, 6th edition (Elsevier, 2025).</p>
     <h4>Columns</h4>
     <ul><li>Euler load F<sub>c</sub> = n²π²EI/L² (Eq 11.14, p.389), pinned ends n = 1. Shape factor φ = 12I/A² (Eq 11.3, p.380); tube 3r/πt, solid 3/π (Table 11.3), so the load ratio is r/t.</li>
-    <li>Real columns start slightly bent. The demo uses a starting bow of L/1000 that grows as 1/(1 − F/F<sub>c</sub>); first yield is where axial plus bending stress reaches σ<sub>y</sub> (the Perry–Robertson idea). After first yield the column collapses.</li>
+    <li>Real columns start slightly bent and carry residual stress, so they fail below F<sub>c</sub>. The demo gives each column the EN 1993-1-1 equivalent bow e<sub>0</sub> = α(λ̄ − 0.2)W/A (buckling curve a, α = 0.21, for the hot-finished tube; curve c, α = 0.49, for the solid bar). The bow grows as 1/(1 − F/F<sub>c</sub>), and first yield, where axial plus bending stress reaches σ<sub>y</sub>, then equals the code buckling resistance N<sub>b</sub> = χAf<sub>y</sub>. After that the column collapses.</li>
     <li>Sections: EN 10219 circular hollow section 60.3 × 2.9 mm; solid bar of equal area 25.8 mm. S355: E = 210 GPa, σ<sub>y</sub> = 355 MPa.</li></ul>
     <h4>Thin walls</h4>
-    <ul><li>Aluminium 6061-T6, E = 69 GPa, σ<sub>y</sub> = 250 MPa, area 150 mm². The wall-kink stress 0.145 E t/r is a teaching model chosen so yield and kinking meet at Ashby's limit φ<sub>max</sub> ≈ 2.3(E/σ<sub>f</sub>)<sup>½</sup> (Eq 11.15a, p.393).</li></ul>
+    <ul><li>Aluminium 6061-T6, E = 69 GPa, σ<sub>y</sub> = 250 MPa, area 150 mm². The surface first yields at M<sub>y</sub> = σ<sub>y</sub>Z; the tube collapses when a full plastic hinge forms at M<sub>p</sub> = (4/π)M<sub>y</sub>, 27% higher (thin tube). The wall kinks at about 0.18 E t/r: the classical elastic value 0.6 E t/r cut by a typical 0.3 knock-down for real-world imperfections. Hinge and kink limits cross at r/t ≈ 39, φ ≈ 37, close to Ashby's φ<sub>max</sub> ≈ 2.3(E/σ<sub>f</sub>)<sup>½</sup> = 38 (Eq 11.15a, p.393).</li></ul>
     <h4>Cells</h4>
     <ul><li>Aligned cells ψ = ρ<sub>s</sub>/ρ (Eq 11.38, p.406). Foam E = (ρ/ρ<sub>s</sub>)²E<sub>s</sub> (Eq 13.18, p.470) and σ<sub>pl</sub> = 0.3(ρ/ρ<sub>s</sub>)<sup>3/2</sup>σ<sub>s</sub> (Eq 13.20, p.471). Aligned-cell strength σ = (ρ/ρ<sub>s</sub>)σ<sub>s</sub>.</li>
-    <li>Cell-wall solid ≈ 1500 kg/m³, 35 GPa, read from the cellulose bubble on Fig 13.34. Loads are given as a fraction of the load that breaks the solid bar. Wood is about half as strong along the grain in compression as in tension, so the squeezed face fails first.</li></ul>
+    <li>Cell-wall solid ≈ 1500 kg/m³, 35 GPa, read from the cellulose bubble on Fig 13.34. Loads are given as a fraction of F₀, the load that breaks the solid bar. Wood crushes along the grain at about 39 MPa but breaks in bending at about 70 MPa (Sitka spruce, 12% moisture, USDA Wood Handbook), so the squeezed face creases at 0.55 of the breaking load; the beam then softens and breaks on the stretched face. The foam's walls yield in compression, so its collapse starts at 0.3 × 0.55 = 0.17 F₀.</li></ul>
     <h4>Lattices</h4>
     <ul><li>Octet truss (Fig 13.21): Maxwell M ≥ 0 (Eq 13.3, p.453), E ≈ ⅓(ρ/ρ<sub>s</sub>)E<sub>s</sub> (Eq 13.27, p.473), collapse σ ≈ ⅓(ρ/ρ<sub>s</sub>)σ<sub>s</sub> (Eq 13.28, p.474) or strut buckling 0.2(ρ/ρ<sub>s</sub>)²E<sub>s</sub> (Eq 13.29), whichever is lower.</li>
     <li>Open (body-centred) lattice: M &lt; 0, E ≈ (ρ/ρ<sub>s</sub>)²E<sub>s</sub>, σ<sub>pl</sub> ≈ 0.3(ρ/ρ<sub>s</sub>)<sup>3/2</sup>σ<sub>s</sub>. Ti-6Al-4V as printed: E<sub>s</sub> = 115 GPa, σ<sub>s</sub> ≈ 1000 MPa (typical laser powder-bed values).</li>
+    <li>As printed, Ti-6Al-4V stretches only a few percent before it breaks, so compression tests on printed lattices end with struts snapping along a band at about 45° and the load dropping, not with a long collapse plateau. Both lattices fail that way here; the open lattice first forms plastic hinges at its joints.</li>
     <li>Squash in the 3D view is drawn 8× larger than the elastic strain; the ratio between the two lattices is true.</li></ul>
     <h4>Corrugation</h4>
-    <ul><li>φ<sub>e</sub> = (2a+t)²/t² and φ<sub>f</sub> = (2a+t)/t (Eqs 12.8–12.9, p.436) are ideal values for a section through the wave peaks; real gains are a little lower, and deep corrugations can also buckle locally at the crest. S280GD galvanized sheet, σ<sub>y</sub> = 280 MPa.</li></ul>
+    <ul><li>φ<sub>e</sub> = (2a+t)²/t² and φ<sub>f</sub> = (2a+t)/t (Eqs 12.8–12.9, p.436) are ideal values for a section through the wave peaks; real gains are a little lower, and deep corrugations can also buckle locally at the crest. S280GD galvanized sheet, σ<sub>y</sub> = 280 MPa. The surface first yields at M<sub>y</sub> = σ<sub>y</sub>Z; the sheet folds when the full plastic moment forms, 1.5 M<sub>y</sub> for a flat strip, falling towards 1.27 M<sub>y</sub> for a deep wave.</li></ul>
     <h4>Microscope views</h4>
     <ul><li>Grain and atom views are drawings of the mechanisms, not simulations. Strain is exaggerated so it can be seen. Atom views show one slip plane side-on; the real plane sits at about 45° to the load, where the shear stress on it is largest.</li>
     <li>Mechanisms: slip on {110} planes in ferrite and dislocation pinning by carbon (steel); {111} slip and Mg–Si (β″) precipitates in 6061-T6; α′ martensite, partly melted powder and pores in printed Ti-6Al-4V; cellulose chains joined by hydrogen bonds in wood cell walls; zinc-coating cracking on galvanized sheet.</li></ul>

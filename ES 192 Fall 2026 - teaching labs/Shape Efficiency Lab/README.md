@@ -25,8 +25,12 @@ Each experiment links what the part does (the 3D rig), why (the governing equati
 ## Models and honesty notes
 
 - Equations: Ashby, *Materials Selection in Mechanical Design*, 6th ed. — Eqs 11.3, 11.14, 11.15a, 11.38, 12.8–12.9, 13.3, 13.18, 13.20, 13.27–13.29.
-- Columns start with a bow of L/1000; first yield is where axial plus bending stress reaches σ<sub>y</sub>.
-- The thin-wall kink stress (0.145 E t/r) is a teaching model, set so yield and kinking meet at Ashby's φ<sub>max</sub> ≈ 2.3(E/σ<sub>f</sub>)<sup>½</sup>.
+- **Breaking points follow real data, not just first yield:**
+  - Columns carry the EN 1993-1-1 buckling resistance N<sub>b</sub> = χAf<sub>y</sub> (curve a for the hot-finished tube, c for the solid bar), through the code's equivalent starting bow.
+  - Metal tubes and sheets first yield at the surface (M<sub>y</sub>) but collapse only at the full plastic moment: 1.27 M<sub>y</sub> for a tube, 1.5 M<sub>y</sub> for a flat strip.
+  - Thin walls kink at 0.18 E t/r (the classical 0.6 E t/r with a 0.3 imperfection knock-down). This crosses the hinge limit at r/t ≈ 39, matching Ashby's φ<sub>max</sub> ≈ 2.3(E/σ<sub>f</sub>)<sup>½</sup> = 38.
+  - Wood creases on the squeezed face at 0.55 of its breaking load (Sitka spruce: 38.7 MPa crushing vs 70.3 MPa bending strength, USDA Wood Handbook), then breaks on the stretched face.
+  - Printed Ti-6Al-4V lattices end by struts snapping along a ~45° band, as tests on as-built lattices show.
 - The grain and atom views are drawings of the mechanisms with exaggerated strain, not simulations. Atom views show one slip plane side-on; the real plane sits at about 45° to the load.
 
 ## Editing

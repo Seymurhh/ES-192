@@ -23,7 +23,8 @@ function renderChart(){if(!RIG[cur].S)return;const Rg=RIG[cur],fn=chartKind==='t
   $('ch-title').textContent=t;fn.call(Rg,$('ch-svg'),$('ch-leg'));
   if(!$('stagechart').hidden){$('sc-title').textContent=t;fn.call(Rg,$('sc-svg'),$('sc-leg'));}}
 function refresh(){RIG[cur].update();renderMicro();renderChart();}
-function newSpecimen(){const Rg=RIG[cur];Rg.hist=Rg.hist.map(()=>0);if(Rg.histF)Rg.histF=Rg.histF.map(()=>0);refresh();MIC.snap();}
+function clearHist(Rg){for(const k of Object.keys(Rg))if(/^hist/.test(k)&&Array.isArray(Rg[k]))Rg[k]=Rg[k].map(()=>0);}
+function newSpecimen(){clearHist(RIG[cur]);refresh();MIC.snap();}
 
 function show(id){stopPlay();cur=id;microPick=null;tabBtns.forEach(b=>b.setAttribute('aria-selected',b.dataset.tab===id));
   document.querySelectorAll('[data-panel]').forEach(el=>el.hidden=el.dataset.panel!==id);
@@ -34,11 +35,11 @@ tabBtns.forEach(b=>b.addEventListener('click',()=>show(b.dataset.tab)));
 /* sliders: geometry sliders make a new specimen and rebuild; load sliders only update */
 const GEOM={'c-L':'column','w-k':'wall','m-r':'cells','l-r':'lattice','s-a':'sheet'};
 const LOADS={'c-F':'column','w-F':'wall','m-P':'cells','l-P':'lattice','s-P':'sheet'};
-for(const id in GEOM)$(id).addEventListener('input',e=>{if(e.isTrusted)stopPlay();if(cur!==GEOM[id])return;const Rg=RIG[cur];Rg.hist=Rg.hist.map(()=>0);if(Rg.histF)Rg.histF=Rg.histF.map(()=>0);
+for(const id in GEOM)$(id).addEventListener('input',e=>{if(e.isTrusted)stopPlay();if(cur!==GEOM[id])return;const Rg=RIG[cur];clearHist(Rg);
   if(id==='c-L'||id==='w-k'||id==='l-r')Rg.build();refresh();});
 for(const id in LOADS)$(id).addEventListener('input',e=>{if(e.isTrusted)stopPlay();if(cur===LOADS[id])refresh();});
 $('m-type').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;RIG.cells.mtype=b.dataset.t;document.querySelectorAll('#m-type button').forEach(x=>x.setAttribute('aria-pressed',x===b));
-  RIG.cells.hist=[0,0];RIG.cells.histF=[0,0];if(cur==='cells'){RIG.cells.build();refresh();MIC.snap();}});
+  clearHist(RIG.cells);if(cur==='cells'){RIG.cells.build();refresh();MIC.snap();}});
 $('m-pick').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;microPick=+b.dataset.i;renderMicro();MIC.snap();});
 $('ch-pick').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;chartKind=b.dataset.c;document.querySelectorAll('#ch-pick button').forEach(x=>x.setAttribute('aria-pressed',x===b));renderChart();});
 function growChart(on){$('stagechart').hidden=!on;$('b-grow').setAttribute('aria-pressed',on);$('b-grow').textContent=on?'Back to the rig':'Enlarge';renderChart();}

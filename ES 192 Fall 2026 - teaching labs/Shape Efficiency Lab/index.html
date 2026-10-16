@@ -264,7 +264,7 @@ body.present svg text{font-size:13.5px}
       <div class="eq"><span class="f"><i>F</i><sub>c</sub> = π² <i>E I</i> / <i>L</i>²</span><span class="src">Eq 11.14 · p.389</span><span class="v" id="eq-c1"></span></div>
       <div class="eq"><span class="f"><i>I</i><sub>bar</sub> = π<i>r</i>⁴/4 &nbsp; <i>I</i><sub>tube</sub> ≈ π<i>r</i>³<i>t</i></span><span class="src">Table 11.2</span><span class="v" id="eq-c2"></span></div>
       <div class="eq"><span class="f">φ = 12 <i>I</i> / <i>A</i>² &nbsp;→&nbsp; <i>F</i><sub>c,tube</sub>/<i>F</i><sub>c,bar</sub> = <i>r</i>/<i>t</i></span><span class="src">Eq 11.3 · p.380</span><span class="v" id="eq-c3"></span></div>
-      <div class="eq"><span class="f">σ = <i>F</i>/<i>A</i> + <i>F</i> δ <i>c</i> / <i>I</i> &nbsp; (yield when σ = σ<sub>y</sub>)</span><span class="src">bow δ = δ₀/(1 − <i>F</i>/<i>F</i><sub>c</sub>)</span><span class="v" id="eq-c4"></span></div>
+      <div class="eq"><span class="f">Real column: <i>N</i><sub>b</sub> = χ <i>A f</i><sub>y</sub>, &nbsp;λ̄ = (<i>A f</i><sub>y</sub>/<i>F</i><sub>c</sub>)<sup>½</sup></span><span class="src">EN 1993-1-1 §6.3.1</span><span class="v" id="eq-c4"></span></div>
     </div>
 
     <!-- 2 wall -->
@@ -275,8 +275,8 @@ body.present svg text{font-size:13.5px}
     <div class="result" data-panel="wall" id="w-res"></div>
     <div class="eqs" data-panel="wall"><div class="h">Governing equations</div><div class="dl">E = 69 GPa, σ<sub>y</sub> = 250 MPa. 0.5 m long. Always 150 mm² of metal: a wider tube means a thinner wall.</div>
       <div class="eq"><span class="f"><i>M</i> = <i>F L</i> &nbsp; σ = <i>M</i>/<i>Z</i>, &nbsp;<i>Z</i> ≈ π<i>r</i>²<i>t</i></span><span class="src">Table 11.2</span><span class="v" id="eq-w1"></span></div>
-      <div class="eq"><span class="f">Yield: <i>M</i><sub>y</sub> = σ<sub>y</sub> <i>Z</i></span><span class="src">grows with r/t</span><span class="v" id="eq-w2"></span></div>
-      <div class="eq"><span class="f">Wall kinks: σ<sub>k</sub> ≈ 0.15 <i>E t</i>/<i>r</i></span><span class="src">teaching model</span><span class="v" id="eq-w3"></span></div>
+      <div class="eq"><span class="f">Yield: <i>M</i><sub>y</sub> = σ<sub>y</sub><i>Z</i>; hinge: <i>M</i><sub>p</sub> = (4/π)<i>M</i><sub>y</sub></span><span class="src">thin tube</span><span class="v" id="eq-w2"></span></div>
+      <div class="eq"><span class="f">Wall kinks: σ<sub>k</sub> ≈ 0.18 <i>E t</i>/<i>r</i></span><span class="src">0.6<i>Et</i>/<i>r</i> × 0.3 knock-down</span><span class="v" id="eq-w3"></span></div>
       <div class="eq"><span class="f">φ<sub>max</sub> ≈ 2.3 (<i>E</i>/σ<sub>f</sub>)<sup>½</sup></span><span class="src">Eq 11.15a · p.393</span><span class="v" id="eq-w4"></span></div>
     </div>
 
@@ -285,13 +285,13 @@ body.present svg text{font-size:13.5px}
     <p class="q" data-panel="cells">Same mass, spread into cells. Stiffer? Stronger?</p>
     <div class="ctl" data-panel="cells"><div class="seg" id="m-type" role="group" aria-label="Cell type"><button type="button" data-t="prism" aria-pressed="true">Aligned cells (wood)</button><button type="button" data-t="foam" aria-pressed="false">Foam</button></div></div>
     <div class="ctl" data-panel="cells"><label for="m-r"><span>Relative density <span class="sym">ρ/ρ<sub>s</sub></span></span> <output id="o-mr"></output></label><input id="m-r" type="range" min="0.1" max="1" step="0.01" value="0.3"></div>
-    <div class="ctl" data-panel="cells"><label for="m-P"><span>Tip load <span class="sym">F</span></span> <output id="o-mP"></output></label><div class="row"><input id="m-P" type="range" min="0" max="2" step="0.005" value="0.5"><button class="play" type="button" data-for="m-P" aria-label="Play load">▶</button></div></div>
+    <div class="ctl" data-panel="cells"><label for="m-P"><span>Tip load <span class="sym">F</span></span> <output id="o-mP"></output></label><div class="row"><input id="m-P" type="range" min="0" max="3.5" step="0.005" value="0.4"><button class="play" type="button" data-for="m-P" aria-label="Play load">▶</button></div></div>
     <div class="result" data-panel="cells" id="m-res"></div>
     <div class="eqs" data-panel="cells"><div class="h">Governing equations</div><div class="dl">Cell wall E<sub>s</sub> ≈ 35 GPa, ρ<sub>s</sub> ≈ 1500 kg/m³. Equal-mass cantilevers, 0.8 m long.</div>
       <div class="eq"><span class="f">δ = <i>F L</i>³ / 3<i>E I</i>, &nbsp; same mass: <i>b</i> = <i>b</i><sub>0</sub>(ρ<sub>s</sub>/ρ)<sup>½</sup></span><span class="src">Table B.3</span><span class="v" id="eq-m1"></span></div>
       <div class="eq"><span class="f">Aligned: <i>E</i> = (ρ/ρ<sub>s</sub>) <i>E</i><sub>s</sub>, &nbsp; ψ = ρ<sub>s</sub>/ρ</span><span class="src">Eq 11.38 · p.406</span><span class="v" id="eq-m2"></span></div>
-      <div class="eq"><span class="f">Foam: <i>E</i> = (ρ/ρ<sub>s</sub>)² <i>E</i><sub>s</sub>, &nbsp; ψ = 1</span><span class="src">Eq 13.18 · p.470</span><span class="v" id="eq-m3"></span></div>
-      <div class="eq"><span class="f">Foam strength: σ<sub>pl</sub> = 0.3 (ρ/ρ<sub>s</sub>)<sup>3/2</sup> σ<sub>s</sub></span><span class="src">Eq 13.20 · p.471</span><span class="v" id="eq-m4"></span></div>
+      <div class="eq"><span class="f">Foam: <i>E</i> = (ρ/ρ<sub>s</sub>)²<i>E</i><sub>s</sub>, &nbsp;σ<sub>pl</sub> = 0.3(ρ/ρ<sub>s</sub>)<sup>3/2</sup>σ<sub>s</sub></span><span class="src">Eqs 13.18, 13.20</span><span class="v" id="eq-m3"></span></div>
+      <div class="eq"><span class="f">Wood creases first: σ<sub>c</sub> / σ<sub>MOR</sub></span><span class="src">Sitka spruce, USDA Wood Handbook</span><span class="v" id="eq-m4"></span></div>
     </div>
 
     <!-- 4 lattice -->
@@ -340,19 +340,20 @@ body.present svg text{font-size:13.5px}
     <p>Equations and page numbers refer to Ashby, <i>Materials Selection in Mechanical Design</i>, 6th edition (Elsevier, 2025).</p>
     <h4>Columns</h4>
     <ul><li>Euler load F<sub>c</sub> = n²π²EI/L² (Eq 11.14, p.389), pinned ends n = 1. Shape factor φ = 12I/A² (Eq 11.3, p.380); tube 3r/πt, solid 3/π (Table 11.3), so the load ratio is r/t.</li>
-    <li>Real columns start slightly bent. The demo uses a starting bow of L/1000 that grows as 1/(1 − F/F<sub>c</sub>); first yield is where axial plus bending stress reaches σ<sub>y</sub> (the Perry–Robertson idea). After first yield the column collapses.</li>
+    <li>Real columns start slightly bent and carry residual stress, so they fail below F<sub>c</sub>. The demo gives each column the EN 1993-1-1 equivalent bow e<sub>0</sub> = α(λ̄ − 0.2)W/A (buckling curve a, α = 0.21, for the hot-finished tube; curve c, α = 0.49, for the solid bar). The bow grows as 1/(1 − F/F<sub>c</sub>), and first yield, where axial plus bending stress reaches σ<sub>y</sub>, then equals the code buckling resistance N<sub>b</sub> = χAf<sub>y</sub>. After that the column collapses.</li>
     <li>Sections: EN 10219 circular hollow section 60.3 × 2.9 mm; solid bar of equal area 25.8 mm. S355: E = 210 GPa, σ<sub>y</sub> = 355 MPa.</li></ul>
     <h4>Thin walls</h4>
-    <ul><li>Aluminium 6061-T6, E = 69 GPa, σ<sub>y</sub> = 250 MPa, area 150 mm². The wall-kink stress 0.145 E t/r is a teaching model chosen so yield and kinking meet at Ashby's limit φ<sub>max</sub> ≈ 2.3(E/σ<sub>f</sub>)<sup>½</sup> (Eq 11.15a, p.393).</li></ul>
+    <ul><li>Aluminium 6061-T6, E = 69 GPa, σ<sub>y</sub> = 250 MPa, area 150 mm². The surface first yields at M<sub>y</sub> = σ<sub>y</sub>Z; the tube collapses when a full plastic hinge forms at M<sub>p</sub> = (4/π)M<sub>y</sub>, 27% higher (thin tube). The wall kinks at about 0.18 E t/r: the classical elastic value 0.6 E t/r cut by a typical 0.3 knock-down for real-world imperfections. Hinge and kink limits cross at r/t ≈ 39, φ ≈ 37, close to Ashby's φ<sub>max</sub> ≈ 2.3(E/σ<sub>f</sub>)<sup>½</sup> = 38 (Eq 11.15a, p.393).</li></ul>
     <h4>Cells</h4>
     <ul><li>Aligned cells ψ = ρ<sub>s</sub>/ρ (Eq 11.38, p.406). Foam E = (ρ/ρ<sub>s</sub>)²E<sub>s</sub> (Eq 13.18, p.470) and σ<sub>pl</sub> = 0.3(ρ/ρ<sub>s</sub>)<sup>3/2</sup>σ<sub>s</sub> (Eq 13.20, p.471). Aligned-cell strength σ = (ρ/ρ<sub>s</sub>)σ<sub>s</sub>.</li>
-    <li>Cell-wall solid ≈ 1500 kg/m³, 35 GPa, read from the cellulose bubble on Fig 13.34. Loads are given as a fraction of the load that breaks the solid bar. Wood is about half as strong along the grain in compression as in tension, so the squeezed face fails first.</li></ul>
+    <li>Cell-wall solid ≈ 1500 kg/m³, 35 GPa, read from the cellulose bubble on Fig 13.34. Loads are given as a fraction of F₀, the load that breaks the solid bar. Wood crushes along the grain at about 39 MPa but breaks in bending at about 70 MPa (Sitka spruce, 12% moisture, USDA Wood Handbook), so the squeezed face creases at 0.55 of the breaking load; the beam then softens and breaks on the stretched face. The foam's walls yield in compression, so its collapse starts at 0.3 × 0.55 = 0.17 F₀.</li></ul>
     <h4>Lattices</h4>
     <ul><li>Octet truss (Fig 13.21): Maxwell M ≥ 0 (Eq 13.3, p.453), E ≈ ⅓(ρ/ρ<sub>s</sub>)E<sub>s</sub> (Eq 13.27, p.473), collapse σ ≈ ⅓(ρ/ρ<sub>s</sub>)σ<sub>s</sub> (Eq 13.28, p.474) or strut buckling 0.2(ρ/ρ<sub>s</sub>)²E<sub>s</sub> (Eq 13.29), whichever is lower.</li>
     <li>Open (body-centred) lattice: M &lt; 0, E ≈ (ρ/ρ<sub>s</sub>)²E<sub>s</sub>, σ<sub>pl</sub> ≈ 0.3(ρ/ρ<sub>s</sub>)<sup>3/2</sup>σ<sub>s</sub>. Ti-6Al-4V as printed: E<sub>s</sub> = 115 GPa, σ<sub>s</sub> ≈ 1000 MPa (typical laser powder-bed values).</li>
+    <li>As printed, Ti-6Al-4V stretches only a few percent before it breaks, so compression tests on printed lattices end with struts snapping along a band at about 45° and the load dropping, not with a long collapse plateau. Both lattices fail that way here; the open lattice first forms plastic hinges at its joints.</li>
     <li>Squash in the 3D view is drawn 8× larger than the elastic strain; the ratio between the two lattices is true.</li></ul>
     <h4>Corrugation</h4>
-    <ul><li>φ<sub>e</sub> = (2a+t)²/t² and φ<sub>f</sub> = (2a+t)/t (Eqs 12.8–12.9, p.436) are ideal values for a section through the wave peaks; real gains are a little lower, and deep corrugations can also buckle locally at the crest. S280GD galvanized sheet, σ<sub>y</sub> = 280 MPa.</li></ul>
+    <ul><li>φ<sub>e</sub> = (2a+t)²/t² and φ<sub>f</sub> = (2a+t)/t (Eqs 12.8–12.9, p.436) are ideal values for a section through the wave peaks; real gains are a little lower, and deep corrugations can also buckle locally at the crest. S280GD galvanized sheet, σ<sub>y</sub> = 280 MPa. The surface first yields at M<sub>y</sub> = σ<sub>y</sub>Z; the sheet folds when the full plastic moment forms, 1.5 M<sub>y</sub> for a flat strip, falling towards 1.27 M<sub>y</sub> for a deep wave.</li></ul>
     <h4>Microscope views</h4>
     <ul><li>Grain and atom views are drawings of the mechanisms, not simulations. Strain is exaggerated so it can be seen. Atom views show one slip plane side-on; the real plane sits at about 45° to the load, where the shear stress on it is largest.</li>
     <li>Mechanisms: slip on {110} planes in ferrite and dislocation pinning by carbon (steel); {111} slip and Mg–Si (β″) precipitates in 6061-T6; α′ martensite, partly melted powder and pores in printed Ti-6Al-4V; cellulose chains joined by hydrogen bonds in wood cell walls; zinc-coating cracking on galvanized sheet.</li></ul>
@@ -1952,18 +1953,21 @@ function secSVG(kind,o={}){const S='stroke="#1c1b1f" stroke-width="1.2"';
   return '';}
 
 /* =========================== 1. COLUMNS =========================== */
-// S355 steel. EN 10219 tube 60.3 x 2.9 mm vs a solid bar of equal area (25.8 mm). Pinned ends, starting bow L/1000.
+// S355 steel. EN 10219 tube 60.3 x 2.9 mm vs a solid bar of equal area (25.8 mm). Pinned ends.
+// Starting bow = the EN 1993-1-1 equivalent imperfection e0 = alpha (lambda - 0.2) W/A (curve a, alpha 0.21: hot-finished hollow section;
+// curve c, alpha 0.49: solid section), so first yield by the Ayrton-Perry formula equals the code buckling resistance N_b = chi A f_y.
 const COL={E:210e9,sy:355e6,Fmax:150e3,b0:1/1000,
-  items:[{key:'bar',name:'Solid bar',ro:0.0129,ri:0,x:-0.45,side:-1,label:'Ø25.8 mm solid bar'},{key:'tube',name:'Tube',ro:0.03015,ri:0.02725,x:0.45,side:1,label:'Ø60.3 × 2.9 mm tube'}]};
+  items:[{key:'bar',name:'Solid bar',ro:0.0129,ri:0,x:-0.45,side:-1,label:'Ø25.8 mm solid bar',alpha:0.49,curve:'c'},{key:'tube',name:'Tube',ro:0.03015,ri:0.02725,x:0.45,side:1,label:'Ø60.3 × 2.9 mm tube',alpha:0.21,curve:'a'}]};
 COL.items.forEach(it=>{it.A=Math.PI*(it.ro**2-it.ri**2);it.I=Math.PI/4*(it.ro**4-it.ri**4);it.phi=12*it.I/it.A**2;});
 RIG.column={hist:[0,0],items:COL.items,view:{dir:[0.12,0.22,1],lift:0},legend:['Strain / yield strain','0','yield'],
   F(){const u=+$('c-F').value;return COL.Fmax*u*u;},
-  state(it,F,L,pH){const Fc=Math.PI**2*COL.E*it.I/(L*L),Fy=COL.sy*it.A,perm=0.07*L*pH,e0=L*COL.b0+perm,c=it.ro;
+  state(it,F,L,pH){const Fc=Math.PI**2*COL.E*it.I/(L*L),Fy=COL.sy*it.A,c=it.ro,lam=Math.sqrt(Fy/Fc),eq=Math.max(0,it.alpha*(lam-0.2))*it.I/(c*it.A),perm=0.07*L*pH,e0=Math.max(eq,L/5000)+perm;
     const sigf=f=>f/it.A*(1+e0*c*it.A/(it.I*(1-f/Fc)));let lo=0,hi=Math.min(Fc,Fy)*0.999999;for(let i=0;i<60;i++){const m=(lo+hi)/2;if(sigf(m)<COL.sy)lo=m;else hi=m;}
     const F1=lo,pl=F>F1?clamp((F-F1)/(0.05*F1),0,1):0;const d1=e0/(1-F1/Fc);
     const bow=pl>0?d1+(0.1*L-d1)*smooth(pl):e0/(1-F/Fc);
     const sface=pl>0?COL.sy:F/it.A+F*bow*c/it.I;
-    return {Fc,Fy,F1,pl,bow,sface,stocky:Fc>=Fy,e0};},
+    const ph=0.5*(1+it.alpha*(lam-0.2)+lam*lam),chi=Math.min(1,1/(ph+Math.sqrt(Math.max(0,ph*ph-lam*lam))));
+    return {Fc,Fy,F1,pl,bow,sface,stocky:Fc>=Fy,e0,eq,lam,chi,Nb:chi*Fy};},
   model(){const F=this.F(),L=+$('c-L').value;return this.items.map((it,i)=>{const s=this.state(it,F,L,this.hist[i]);this.hist[i]=Math.max(this.hist[i],s.pl);s.pH=this.hist[i];return s;});},
   build(){clearRig();if(!HAS3D)return;const L=+$('c-L').value,y0=0.22;bedPlate(2.1,0.9,0,0);
     for(const it of this.items){const g=new THREE.Group();g.position.x=it.x;rig.add(g);it.g=g;const yTop=y0+L+0.72;
@@ -1983,12 +1987,12 @@ RIG.column={hist:[0,0],items:COL.items,view:{dir:[0.12,0.22,1],lift:0},legend:['
     this.dim=dimLine(new THREE.Vector3(1,0,0));this.tDim=tag('','dim',true);this.update();},
   update(){const F=this.F(),L=+$('c-L').value,S=this.model();this.S=S;const [a,b]=S;
     $('o-cF').textContent=sig(F/1e3)+' kN';$('o-cL').textContent=fmt(L,2)+' m';
-    $('c-res').innerHTML=`<span class="big">${sig(a.Fc/1e3)} <span>vs</span> ${sig(b.Fc/1e3)} kN</span><small>Euler buckling load F<sub>c</sub>: solid bar vs tube (same mass). ${b.stocky?'At this length the tube yields before it can buckle.':`Ratio ${fmt(b.Fc/a.Fc,1)} = r/t.`}</small>`;
+    $('c-res').innerHTML=`<span class="big">${sig(a.Nb/1e3)} <span>vs</span> ${sig(b.Nb/1e3)} kN</span><small>Load each column really carries (EN 1993-1-1). Ideal Euler loads: ${sig(a.Fc/1e3)} and ${sig(b.Fc/1e3)} kN, ratio ${fmt(b.Fc/a.Fc,1)} = r/t; real columns start slightly bent, so they fail earlier.</small>`;
     const it=this.items;
     $('eq-c1').innerHTML=`bar: π²·210 GPa·${sci(it[0].I*1e12)} mm⁴/(${fmt(L,2)} m)² = <b>${sig(a.Fc/1e3)} kN</b> · tube: <b>${sig(b.Fc/1e3)} kN</b>`;
     $('eq-c2').innerHTML=`I<sub>bar</sub> = <b>${sci(it[0].I*1e12)} mm⁴</b> · I<sub>tube</sub> = <b>${sci(it[1].I*1e12)} mm⁴</b> · both A = ${fmt(it[0].A*1e6,0)} mm²`;
     $('eq-c3').innerHTML=`φ<sub>bar</sub> = 3/π = <b>${fmt(it[0].phi,2)}</b> · φ<sub>tube</sub> = 3r/πt = <b>${fmt(it[1].phi,1)}</b> → ratio <b>${fmt(it[1].phi/it[0].phi,1)}</b>`;
-    $('eq-c4').innerHTML=`inner-face stress now: bar <b>${sig(a.sface/1e6)} MPa</b>, tube <b>${sig(b.sface/1e6)} MPa</b> (σ<sub>y</sub> = 355) · first yield at ${sig(a.F1/1e3)} and ${sig(b.F1/1e3)} kN`;
+    $('eq-c4').innerHTML=`bar (curve c): λ̄ = ${fmt(a.lam,2)}, χ = ${fmt(a.chi,3)} → <b>N<sub>b</sub> = ${sig(a.Nb/1e3)} kN</b> · tube (curve a): λ̄ = ${fmt(b.lam,2)}, χ = ${fmt(b.chi,2)} → <b>N<sub>b</sub> = ${sig(b.Nb/1e3)} kN</b> · starting bows ${fmt(a.eq*1000,1)} and ${fmt(b.eq*1000,1)} mm`;
     if(HAS3D&&it[0].g)it.forEach((m,i)=>{const s=S[i],y0=m.y0,h=Math.max(s.pH,s.pl);
       const shape=u=>(1-h)*Math.sin(Math.PI*u)+h*(1-Math.abs(2*u-1));
       const short=(1-h)*Math.PI**2*s.bow**2/(4*L)+h*2*s.bow**2/L, y1=y0+L-short;
@@ -2033,16 +2037,21 @@ RIG.column={hist:[0,0],items:COL.items,view:{dir:[0.12,0.22,1],lift:0},legend:['
 };
 
 /* =========================== 2. THIN WALLS =========================== */
-// 6061-T6 tube cantilever, L = 0.5 m, 150 mm^2 at every r/t. Yield moment sigma_y Z; wall kinks at 0.145 E t/r (teaching model,
-// set so the two meet at r/t = 40, i.e. phi = 3(r/t)/pi = 38 = 2.3(E/sigma_f)^1/2, Ashby Eq. 11.15a).
-const WALL={E:69e9,sy:250e6,A:150e-6,L:0.5,c:0.145};
+// 6061-T6 tube cantilever, L = 0.5 m, 150 mm^2 at every r/t. First yield M_y = sigma_y Z; full plastic hinge M_p = (4/pi) M_y (thin tube).
+// Wall kinks at sigma_k = 0.18 E t/r: the classical 0.6 E t/r with a typical 0.3 knock-down for imperfections. The hinge and kink
+// limits then cross at r/t = 39, phi = 3(r/t)/pi = 37, matching Ashby's 2.3(E/sigma_f)^1/2 = 38 (Eq. 11.15a).
+const WALL={E:69e9,sy:250e6,A:150e-6,L:0.5,c:0.18};
 const kOf=v=>5*Math.pow(20,v);
-function wallCap(k){const r=Math.sqrt(WALL.A*k/(2*Math.PI)),t=r/k,Z=WALL.A*r/2,My=WALL.sy*Z,sk=WALL.c*WALL.E/k,Mk=sk*Z;return{r,t,Z,My,Mk,sk,I:Math.PI*r**3*t,M:Math.min(My,Mk),mode:My<=Mk?'yield':'kink'};}
-RIG.wall={hist:[0],histF:[0],items:[{name:'Tube'}],view:{dir:[0.42,0.32,1],lift:-0.02},legend:['Bending strain / yield strain','0','yield'],
-  model(){const k=kOf(+$('w-k').value),F=+$('w-F').value,c=wallCap(k),p=F*WALL.L/c.M;
-    const pl=p>1?clamp((p-1)/(c.mode==='yield'?0.25:0.15),0,1):0,fr=c.mode==='kink'?clamp((p-1.45)/0.4,0,1):0;
-    this.hist[0]=Math.max(this.hist[0],pl);this.histF[0]=Math.max(this.histF[0],fr);
-    const Fe=Math.min(F,c.M/WALL.L),el=Fe*WALL.L**3/(3*WALL.E*c.I);return {k,F,c,p,pl,fr,pH:this.hist[0],fH:this.histF[0],el};},
+function wallCap(k){const r=Math.sqrt(WALL.A*k/(2*Math.PI)),t=r/k,Z=WALL.A*r/2,My=WALL.sy*Z,Mp=4/Math.PI*My,sk=WALL.c*WALL.E/k,Mk=sk*Z;
+  return{r,t,Z,My,Mp,Mk,sk,I:Math.PI*r**3*t,M:Math.min(Mp,Mk),mode:Mp<=Mk?'yield':'kink'};}
+const WALLX=(()=>{let lo=5,hi=100;for(let i=0;i<60;i++){const m=Math.sqrt(lo*hi),c=wallCap(m);if(c.Mp<c.Mk)lo=m;else hi=m;}return lo;})();
+RIG.wall={hist:[0],histY:[0],histF:[0],items:[{name:'Tube'}],view:{dir:[0.42,0.32,1],lift:-0.02},legend:['Bending strain / yield strain','0','yield'],
+  model(){const k=kOf(+$('w-k').value),F=+$('w-F').value,c=wallCap(k),Mnow=F*WALL.L,p=Mnow/c.M;
+    const yld=c.My<c.M&&Mnow>c.My?clamp((Mnow-c.My)/(c.M-c.My),0,1):0;
+    const pl=p>1?clamp((p-1)/0.15,0,1):0,fr=c.mode==='kink'?clamp((p-1.45)/0.4,0,1):0;
+    this.histY[0]=Math.max(this.histY[0],yld);this.hist[0]=Math.max(this.hist[0],pl);this.histF[0]=Math.max(this.histF[0],fr);
+    const Fe=Math.min(F,c.M/WALL.L),el=Fe*WALL.L**3/(3*WALL.E*c.I)*(1+0.6*yld*yld);
+    return {k,F,c,p,yld,pl,fr,yH:this.histY[0],pH:this.hist[0],fH:this.histF[0],el};},
   build(){clearRig();if(!HAS3D)return;bedPlate(1.05,.62,.22,0);
     box(.26,.02,.26,M.paint,-.06,.05,0);box(.012,.62,.11,M.paint,-.06,.37,0);for(const z of [-.055,.055])box(.12,.62,.012,M.paint,-.06,.37,z);
     for(const sx of [-1,1])for(const sz of [-1,1])hexBolt(.012,-.06+sx*.1,.068,sz*.1);
@@ -2054,14 +2063,14 @@ RIG.wall={hist:[0],histF:[0],items:[{name:'Tube'}],view:{dir:[0.42,0.32,1],lift:
     this.dim=dimLine(new THREE.Vector3(0,1,0));this.tDim=tag('','dim',true);this.update();},
   update(){const m=this.model();this.S=[m];const {k,F,c}=m,L=WALL.L;
     $('o-wk').textContent=fmt(k,0);$('o-wF').textContent=fmt(F,0)+' N';
-    $('w-res').innerHTML=`<span class="big">${fmt(c.M/L,0)} N</span><small>Tip load this tube can carry; then it ${c.mode==='yield'?'yields':'kinks'}. Diameter ${fmt(2*c.r*1000,0)} mm, wall ${fmt(c.t*1000,2)} mm.</small>`;
+    $('w-res').innerHTML=`<span class="big">${fmt(c.M/L,0)} N</span><small>Tip load at which this tube ${c.mode==='yield'?'forms a plastic hinge':'kinks'}. ${c.My<c.M?`Its surface first yields at ${fmt(c.My/L,0)} N.`:'It kinks before any yield.'} Diameter ${fmt(2*c.r*1000,0)} mm, wall ${fmt(c.t*1000,2)} mm.</small>`;
     const phi=3*k/Math.PI;
     $('eq-w1').innerHTML=`M = ${fmt(F,0)} N × 0.5 m = <b>${fmt(F*L,0)} N·m</b> · Z = ${sig(c.Z*1e9)} mm³ → σ = <b>${sig(F*L/c.Z/1e6)} MPa</b>`;
-    $('eq-w2').innerHTML=`M<sub>y</sub> = 250 MPa × ${sig(c.Z*1e9)} mm³ = <b>${sig(c.My)} N·m</b>`;
-    $('eq-w3').innerHTML=`σ<sub>k</sub> = 0.145 × 69 GPa / ${fmt(k,0)} = <b>${sig(c.sk/1e6)} MPa</b> → M<sub>k</sub> = <b>${sig(c.Mk)} N·m</b>`;
-    $('eq-w4').innerHTML=`Al: 2.3 × (69 000/250)<sup>½</sup> = <b>38</b> · this tube φ = 3(r/t)/π = <b>${fmt(phi,0)}</b> ${phi>38?'(past the limit: kinks)':'(below the limit: yields)'}`;
+    $('eq-w2').innerHTML=`M<sub>y</sub> = 250 MPa × ${sig(c.Z*1e9)} mm³ = <b>${sig(c.My)} N·m</b> · M<sub>p</sub> = 1.27 M<sub>y</sub> = <b>${sig(c.Mp)} N·m</b>`;
+    $('eq-w3').innerHTML=`σ<sub>k</sub> = 0.18 × 69 GPa / ${fmt(k,0)} = <b>${sig(c.sk/1e6)} MPa</b> → M<sub>k</sub> = <b>${sig(c.Mk)} N·m</b>`;
+    $('eq-w4').innerHTML=`Al: 2.3 × (69 000/250)<sup>½</sup> = <b>38</b> (model crossover φ = ${fmt(3*WALLX/Math.PI,0)}) · this tube φ = 3(r/t)/π = <b>${fmt(phi,0)}</b> → ${c.mode==='yield'?'hinges':'kinks'}`;
     if(!HAS3D||!this.mesh)return;
-    const pH=m.pH,y0=.42,x0=.08;let rot=0,kink=0;if(pH>0){if(c.mode==='yield')rot=0.38*smooth(pH);else{rot=0.75*smooth(pH);kink=smooth(pH);}}
+    const pH=m.pH,y0=.42,x0=.08;let rot=0,kink=0;if(c.mode==='yield')rot=0.38*smooth(pH)+0.02*m.yH;else if(pH>0){rot=0.75*smooth(pH);kink=smooth(pH);}
     const sk=c.mode==='kink'?0.06:0,el=m.el;
     const pf=s=>{const x=s*L,e=-el*(3*s*s-s*s*s)/2;let px=x0+x,py=y0+e;
       if(rot>0){const hinge=c.mode==='kink'?sk*L:0,spread=c.mode==='kink'?0.02:0.12,w=clamp((x-hinge)/(spread*L)+0.5,0,1),a=rot*w;if(x>hinge){const dx=x-hinge;px=x0+hinge+dx*Math.cos(a);py=py-dx*Math.sin(a);}}
@@ -2071,50 +2080,54 @@ RIG.wall={hist:[0],histF:[0],items:[{name:'Tube'}],view:{dir:[0.42,0.32,1],lift:
     const sf=(s,cx)=>{let v=Math.min(F,c.M/L)*L*(1-s)*Math.abs(cx)/(WALL.E*c.I)/(WALL.sy/WALL.E);if(pH>0)v=Math.max(v,c.mode==='kink'?1.3*gk(s)*kink+v:1.15*Math.exp(-s/0.12)*Math.min(1,pH*4)+v);return v;};
     this.mesh.geometry.dispose();this.mesh.geometry=memberGeometry(120,48,planarFrame(pf),c.r+c.t/2,c.r-c.t/2,ringMod,sf);
     this.stub.geometry.dispose();this.stub.geometry=memberGeometry(4,48,planarFrame(s=>new THREE.Vector3(-.02+s*.1,y0,0)),c.r+c.t/2,c.r-c.t/2,null,null);
-    const tip=pf(1),ang=Math.atan2(pf(1).y-pf(.98).y,pf(1).x-pf(.98).x);
+    const tip=pf(1);
     this.arr.position.set(tip.x,tip.y+c.r+.006,0);this.ws.position.set(tip.x-.01,tip.y-c.r,0);this.ws.setCount(Math.max(1,F/100));
     this.tF.pos.set(tip.x,tip.y+c.r+.19,0);this.tF.el.textContent='F = '+fmt(F,0)+' N';
     this.tSup.pos.set(.02,y0+.13,.07);this.tState.pos.set(tip.x-.12,tip.y+.1,0);
-    if(m.p<1&&pH===0){this.tState.el.textContent='elastic';this.tState.el.className='tag ok';}
-    else{this.tState.el.textContent=c.mode==='yield'?(m.p<1?'permanently bent':'YIELDED: plastic hinge'):(m.fH>0?'KINKED and cracking':'KINKED: wall buckled');this.tState.el.className='tag bad';}
+    const st=c.mode==='yield'?(m.pl>0?'PLASTIC HINGE: collapsing':pH>0?'permanently bent':m.yld>0?'surface yielding':m.yH>0?'slightly bent for good':'elastic'):(m.fH>0?'KINKED and cracking':pH>0?'KINKED: wall buckled':'elastic');
+    this.tState.el.textContent=st;this.tState.el.className='tag '+(st==='elastic'?'ok':'bad');
     this.tSec.pos.set(x0+L*.62,y0-.13,.08);this.tSec.el.innerHTML=secSVG('tube',{ri:11.5*(1-2/(k+1))})+`<span><b>Ø${fmt(2*c.r*1000,0)} × ${fmt(c.t*1000,2)} mm</b><i>r</i>/<i>t</i> = ${fmt(k,0)} · I = ${sci(c.I*1e12)} mm⁴</span>`;
     this.dim.set(new THREE.Vector3(x0,y0+c.r+.05,-.0),new THREE.Vector3(x0+L,y0+c.r+.05,0),.015);this.tDim.pos.set(x0+L*.42,y0+c.r+.075,0);this.tDim.el.textContent='L = 0.50 m';
     const hs=c.mode==='kink'?pf(sk):pf(.01);this.hot=c.mode==='kink'?new THREE.Vector3(hs.x,hs.y-c.r,0):new THREE.Vector3(hs.x,hs.y+c.r,0);},
   pick:['Tube'],auto(){return 0;},
-  story(){const m=this.S[0],c=m.c,kink=c.mode==='kink',pl=m.pH;const sigNow=Math.min(m.F*WALL.L,c.M)/c.Z;
-    if(!kink){const steps=['Elastic','Yield','Plastic hinge'];let st,head,why;
-      if(pl>.45){st='Plastic hinge';head=m.p<1?'Unloaded: the tube stays bent':'Plastic hinge at the root';why='Slip has spread from the top and bottom faces right through the wall. The tube now rotates about the clamp like a hinge, and the bend is permanent.';}
-      else if(pl>0){st='Yield';head='Yield at the root, top face';why='Dislocations glide on {111} planes of the aluminium until they meet tiny Mg–Si needles (β″ precipitates). Pushing past them takes extra stress: that is where the T6 temper gets its strength.';}
+  story(){const m=this.S[0],c=m.c,kink=c.mode==='kink',pl=0.35*m.yH+0.65*m.pH;const sigNow=Math.min(m.F*WALL.L,c.My)/c.Z;
+    if(!kink){const steps=['Elastic','First yield','Plastic hinge'];let st,head,why;
+      if(m.pH>0){st='Plastic hinge';head=m.pl>0?'Plastic hinge: the tube collapses':'Unloaded: the tube stays bent';why=`Slip now runs right through the wall at the clamp: the full plastic moment, M<sub>p</sub> = (4/π)M<sub>y</sub> = ${sig(c.Mp)} N·m. The tube rotates about the clamp like a hinge, and the bend is permanent.`;}
+      else if(m.yH>0){st='First yield';head=m.yld>0?'First yield at the surface, core still elastic':'Unloaded: almost straight, slip steps remain';why='The top and bottom faces at the clamp have reached 250 MPa. Dislocations glide on {111} planes until tiny Mg–Si needles (β″ precipitates) hold them back; that is where the T6 temper gets its strength. The rest of the wall is still elastic, so the tube can carry up to 27% more before it hinges.';}
       else{st='Elastic';head='Elastic: top stretches, bottom squeezes';why=`Bending strain is largest at the clamp, on the faces furthest from the tube’s centre: ${sig(sigNow/1e6)} MPa here, ${fmt(sigNow/WALL.sy*100,0)}% of yield. The atoms are only pulled apart a little.`;}
       return {mat:'al',label:'Tube',where:'at the clamp, top face',sign:1,e:clamp(sigNow/WALL.sy,0,1),pl,fr:0,band:0,steps,stage:st,head,why,
-        measure:'<b>Measure it:</b> a strain gauge on top at the clamp, and the tip deflection. Yield shows as a gentle bend-over in the load–deflection curve.'};}
-    const steps=['Elastic','Wall kinks','Crack'];let st,head,why,sign=-1;
+        measure:'<b>Measure it:</b> a strain gauge on top at the clamp, and the tip deflection. First yield shows as the curve starting to bend over; the hinge as the load levelling off.'};}
+    const steps=['Elastic','Wall kinks','Crack'];let st,head,why,sign=-1;const sk=Math.min(m.F*WALL.L,c.Mk)/c.Z;
     if(m.fH>0){st='Crack';sign=1;head='A crack opens in the fold';why='Slip is intense on the outside of the fold. Small voids open around iron-rich particles in the alloy, grow, and link up into a crack.';}
-    else if(pl>0){st='Wall kinks';head='The wall wrinkles before the metal yields';why='A wall this thin buckles locally on the squeezed side. All further bending crowds into that crease, so slip there is many times the average while the rest of the tube stays elastic.';}
-    else{st='Elastic';head='Elastic, but the thin wall is close to wrinkling';why=`The squeezed underside carries ${sig(sigNow/1e6)} MPa. That is below yield (250 MPa) but ${fmt(sigNow/c.sk*100,0)}% of the stress at which this thin wall wrinkles.`;}
-    return {mat:'al',label:'Tube',where:'the crease, near the clamp',sign,e:clamp(sigNow/c.sk,0,1),pl,fr:m.fH,band:1,steps,stage:st,head,why,
-      measure:'<b>Measure it:</b> the load–deflection curve. A kink shows as a sudden drop in load, yield as a gentle bend-over.'};},
-  chartTest(svg,leg){const c=SER(),m=this.S[0],cap=m.c.M/WALL.L,dE=cap*WALL.L**3/(3*WALL.E*m.c.I)*1000,xmax=dE*3;
-    const pts=[[0,0],[dE,cap]],after=m.c.mode==='yield'?[[dE,cap],[xmax*1.2,cap*1.03]]:[[dE,cap],[dE*1.5,cap*.55],[xmax*1.2,cap*.45]];
-    const dNow=(m.el+Math.sin(m.c.mode==='yield'?0.38*smooth(m.pH):0.75*smooth(m.pH))*WALL.L*.9)*1000;
-    plot(svg,{x:{min:0,max:xmax,label:'Tip deflection δ (mm)'},y:{min:0,max:Math.max(cap*1.35,m.F*1.1,50),label:'Tip load F (N)'},
-      series:[{pts,c:c.b,w:2.8},{pts:after,c:c.b,dash:'6 4',w:2}],hl:[{v:m.F,c:c.cr,dash:'1 0',w:1}],
-      marks:[{x:dNow,y:m.F,c:c.b}],texts:[{x:dE,y:cap,t:m.c.mode==='yield'?'yields: load levels off':'kinks: load drops',dx:8,dy:-8,c:c.b}]});
-    legend(leg,[{c:c.b,t:'Elastic: δ = FL³/3EI'},{c:c.b,t:m.c.mode==='yield'?'after yield':'after the wall kinks',dash:1},{c:c.cr,t:'applied load'}]);},
-  chartDesign(svg,leg){const c=SER(),m=this.S[0],pts=[],py=[],pk=[];for(let i=0;i<=120;i++){const k=kOf(i/120),w=wallCap(k);pts.push([k,w.M/WALL.L]);py.push([k,w.My/WALL.L]);pk.push([k,Math.min(5000,w.Mk/WALL.L)]);}
+    else if(m.pH>0){st='Wall kinks';head=c.Mk>c.My?'The surface yielded, then the thin wall wrinkled':'The wall wrinkles before the metal yields';why='A wall this thin buckles locally on the squeezed side, below the full plastic moment. All further bending crowds into that crease, so slip there is many times the average while the rest of the tube stays nearly elastic. The load drops.';}
+    else{st='Elastic';head='Elastic, but the thin wall is close to wrinkling';why=`The squeezed underside carries ${sig(sk/1e6)} MPa, ${fmt(sk/c.sk*100,0)}% of the ${sig(c.sk/1e6)} MPa at which this thin wall wrinkles (0.18 E t/r).`;}
+    return {mat:'al',label:'Tube',where:'the crease, near the clamp',sign,e:clamp(sk/c.sk,0,1),pl:Math.max(m.pH,0.3*m.yH),fr:m.fH,band:1,steps,stage:st,head,why,
+      measure:'<b>Measure it:</b> the load–deflection curve. A kink shows as a sudden drop in load; a plastic hinge as the load levelling off.'};},
+  chartTest(svg,leg){const c=SER(),m=this.S[0],L=WALL.L,k=1000*L**3/(3*WALL.E*m.c.I),Fy=m.c.My/L,Fc=m.c.M/L,xmax=Fc*k*3.2;
+    const pts=[[0,0]];if(Fy<Fc){pts.push([Fy*k,Fy]);for(let i=1;i<=20;i++){const y=i/20,f=Fy+(Fc-Fy)*y;pts.push([f*k*(1+0.6*y*y),f]);}}else pts.push([Fc*k,Fc]);
+    const end=pts[pts.length-1],after=m.c.mode==='yield'?[end,[xmax*1.3,Fc*1.02]]:[end,[end[0]*1.4,Fc*.55],[xmax*1.3,Fc*.45]];
+    const dNow=(m.el+Math.sin(m.c.mode==='yield'?0.38*smooth(m.pH):0.75*smooth(m.pH))*L*.9)*1000;
+    const tx=[{x:end[0],y:Fc,t:m.c.mode==='yield'?'plastic hinge: load levels off':'kinks: load drops',dx:8,dy:-8,c:c.b}];if(Fy<Fc)tx.push({x:Fy*k,y:Fy,t:'first yield',dx:8,dy:14,c:c.mu});
+    plot(svg,{x:{min:0,max:xmax,label:'Tip deflection δ (mm)'},y:{min:0,max:Math.max(Fc*1.35,m.F*1.1,50),label:'Tip load F (N)'},
+      series:[{pts,c:c.b,w:2.8},{pts:after,c:c.b,dash:'6 4',w:2}],hl:[{v:m.F,c:c.cr,dash:'1 0',w:1}],marks:[{x:dNow,y:m.F,c:c.b}],texts:tx});
+    legend(leg,[{c:c.b,t:'Elastic: δ = FL³/3EI, then yielding'},{c:c.b,t:m.c.mode==='yield'?'after the hinge forms':'after the wall kinks',dash:1},{c:c.cr,t:'applied load'}]);},
+  chartDesign(svg,leg){const c=SER(),m=this.S[0],pts=[],py=[],pp=[],pk=[];for(let i=0;i<=120;i++){const k=kOf(i/120),w=wallCap(k);pts.push([k,w.M/WALL.L]);py.push([k,w.My/WALL.L]);pp.push([k,w.Mp/WALL.L]);pk.push([k,Math.min(5000,w.Mk/WALL.L)]);}
     const top=Math.max(...pts.map(p=>p[1]))*1.35;
     plot(svg,{x:{min:5,max:100,log:true,label:'Radius / wall thickness r/t (same metal area)',ticks:[5,10,20,40,100]},y:{min:0,max:top,label:'Tip load it can carry (N)'},
-      series:[{pts:py,c:c.a,dash:'4 4',w:1.8},{pts:pk,c:c.cr,dash:'4 4',w:1.8},{pts,c:c.b,w:3}],vl:[{v:40,c:c.mu,dash:'2 3',label:'Eq 11.15a limit'}],hl:[{v:m.F,c:c.cr,dash:'1 0',w:1}],
-      marks:[{x:m.k,y:m.c.M/WALL.L,c:c.b,label:fmt(m.c.M/WALL.L,0)+' N'}],texts:[{x:6,y:wallCap(6).My/WALL.L,t:'yield limit (rises)',dy:-8,c:c.a},{x:95,y:wallCap(95).Mk/WALL.L,t:'kink limit (falls)',anchor:'end',dy:-8,c:c.cr}]});
-    legend(leg,[{c:c.b,t:'Capacity: the lower of the two'},{c:c.a,t:'Yield σ<sub>y</sub>Z',dash:1},{c:c.cr,t:'Wall kinks',dash:1},{c:c.cr,t:'applied load'}]);},
+      series:[{pts:py,c:c.mu,dash:'2 4',w:1.4},{pts:pp,c:c.a,dash:'5 4',w:1.8},{pts:pk,c:c.cr,dash:'5 4',w:1.8},{pts,c:c.b,w:3}],vl:[{v:WALLX,c:c.mu,dash:'2 3',label:'crossover ≈ Eq 11.15a'}],hl:[{v:m.F,c:c.cr,dash:'1 0',w:1}],
+      marks:[{x:m.k,y:m.c.M/WALL.L,c:c.b,label:fmt(m.c.M/WALL.L,0)+' N'}],texts:[{x:6,y:wallCap(6).Mp/WALL.L,t:'plastic hinge (rises)',dy:-8,c:c.a},{x:95,y:wallCap(95).Mk/WALL.L,t:'kink limit (falls)',anchor:'end',dy:-8,c:c.cr}]});
+    legend(leg,[{c:c.b,t:'Capacity: the lower limit'},{c:c.a,t:'Plastic hinge M<sub>p</sub>',dash:1},{c:c.mu,t:'First yield M<sub>y</sub>',dash:1},{c:c.cr,t:'Wall kinks',dash:1},{c:c.cr,t:'applied load'}]);},
 };
 
 /* ---- 31-rigs-b.js ---- */
 /* =========================== 3. CELLS =========================== */
 // Equal-mass cantilevers, L = 0.8 m. Solid bar b0 = 40 mm of cell-wall solid (E_s 35 GPa, rho_s 1500 kg/m3); expanded beam b = b0 (rho_s/rho)^1/2.
 // Stiffness gain psi: aligned cells rho_s/rho (Eq. 11.38); foam 1 (E = rel^2 E_s, Eq. 13.18).
-// Breaking load relative to the solid bar: aligned cells (sigma = rel sigma_s) -> 1/rel^1/2; foam (Eq. 13.20, 0.3 rel^3/2 sigma_s) -> 0.3, at any density.
-const CEL={L:0.8,b0:0.04,drop:0.12,Es:35,rs:1500};
+// Loads are fractions of F0, the load that breaks the solid bar (tension face reaches the bending strength, MOR).
+// Wood fails first in compression: the squeezed face creases when F = (sigma_c/MOR) x break load; Sitka spruce 38.7/70.3 MPa = 0.55
+// (USDA Wood Handbook, 12% MC). Aligned cells (sigma = rel sigma_s): crease and break both scale as 1/rel^1/2.
+// Foam (Eq. 13.20, sigma_pl = 0.3 rel^3/2 sigma_ys, walls yield in compression): collapse starts at 0.3 x 0.55 F0 = 0.17 F0 at any density.
+const CEL={L:0.8,b0:0.04,drop:0.12,Es:35,rs:1500,cr:38.7/70.3};
 function honeycombShape(b,rel){
   const sh=new THREE.Shape();sh.moveTo(-b/2,-b/2);sh.lineTo(b/2,-b/2);sh.lineTo(b/2,b/2);sh.lineTo(-b/2,b/2);sh.closePath();
   const ncell=Math.max(4,Math.round(b/0.016)),Rc=b/(ncell*Math.sqrt(3)),Rh=Rc*Math.sqrt(Math.max(0.02,1-rel)),lim=b/2-(Rc-Rh)*0.9;
@@ -2122,10 +2135,14 @@ function honeycombShape(b,rel){
     if(Math.abs(cx)+Rh*0.87>lim||Math.abs(cy)+Rh>lim)continue;const h=new THREE.Path();for(let i=0;i<6;i++){const a=Math.PI/6+i*Math.PI/3,x=cx+Rh*Math.cos(a),y=cy+Rh*Math.sin(a);i?h.lineTo(x,y):h.moveTo(x,y);}h.closePath();sh.holes.push(h);}
   return sh;}
 RIG.cells={hist:[0,0],histF:[0,0],mtype:'prism',items:[{name:'Solid bar'},{name:'Cells'}],view:{dir:[0.95,0.62,1.25],lift:-0.03},legend:['Bending strain / failure strain','0','fails'],
-  model(){const rel=+$('m-r').value,P=+$('m-P').value,pr=this.mtype==='prism',b=CEL.b0/Math.sqrt(rel),psi=[1,pr?1/rel:1],Pf=[1,pr?1/Math.sqrt(rel):0.3];
-    const S=[0,1].map(i=>{const pl=P>Pf[i]?clamp((P-Pf[i])/(0.12*Pf[i]),0,1):0,fr=(i===1&&!pr)?(P>Pf[i]?clamp((P-Pf[i])/(0.6*Pf[i]),0,1):0):(P>1.2*Pf[i]?clamp((P-1.2*Pf[i])/(0.15*Pf[i]),0,1):0);
+  model(){const rel=+$('m-r').value,P=+$('m-P').value,pr=this.mtype==='prism',b=CEL.b0/Math.sqrt(rel),psi=[1,pr?1/rel:1];
+    const lim=[{Pc:CEL.cr,Pb:1},pr?{Pc:CEL.cr/Math.sqrt(rel),Pb:1/Math.sqrt(rel)}:{Pc:0.3*CEL.cr,Pb:0.33}];
+    const S=[0,1].map(i=>{const foam=i===1&&!pr,{Pc,Pb}=lim[i];
+      const pl=P>Pc?clamp(foam?(P-Pc)/(0.25*Pc):(P-Pc)/(Pb-Pc),0,1):0,fr=foam?(P>Pc?clamp((P-Pc)/(Pb-Pc),0,1):0):(P>Pb?clamp((P-Pb)/(0.04*Pb),0,1):0);
       this.hist[i]=Math.max(this.hist[i],pl);this.histF[i]=Math.max(this.histF[i],fr);const pH=this.hist[i],fH=this.histF[i];
-      return {pl,fr,pH,fH,psi:psi[i],Pf:Pf[i],drop:CEL.drop*Math.min(P,Pf[i])/psi[i],rot:0.42*smooth(pH)+0.25*smooth(fH),e:Math.min(1,P/Pf[i])};});
+      const drop=CEL.drop*(Math.min(P,Pc)+(foam?0:1.7*clamp(P-Pc,0,Pb-Pc)))/psi[i];
+      const rot=foam?0.5*smooth(fH):0.05*pH+1.05*smooth(fH);
+      return {pl,fr,pH,fH,psi:psi[i],Pc,Pb,Pf:Pb,drop,rot,foam,e:Math.min(1,P/Pc)};});
     return {rel,P,b,pr,S};},
   build(){clearRig();if(!HAS3D)return;const m=this.model();this.b=m.b;
     box(.8,1.0,.14,M.concrete,.02,.5,-.07);box(.66,.3,.018,M.paint,.02,.64,.009);for(const sx of [-1,1])for(const sy of [-1,1])hexBolt(.016,.02+sx*.29,.64+sy*.11,.022,null,'z');
@@ -2142,21 +2159,21 @@ RIG.cells={hist:[0,0],histF:[0,0],mtype:'prism',items:[{name:'Solid bar'},{name:
   update(){const m=this.model();this.S=m.S;const {rel,P,b,pr}=m;
     this.items[1].name=pr?'Aligned cells':'Foam';
     $('o-mr').textContent=fmt(rel,2);$('o-mP').textContent=fmt(P,2)+' × F'+'₀';
-    const sR=m.S[1].Pf;
-    $('m-res').innerHTML=`<span class="big">${fmt(m.S[1].psi,1)}× <span>stiffer</span></span><small>${pr?`and it carries ${fmt(sR,2)}× the load that breaks the solid bar, at the same mass.`:`Same stiffness as the solid bar, but it breaks at ${fmt(sR,2)}× the load.`} F₀ = load that breaks the solid bar.</small>`;
+    const C=m.S[1];
+    $('m-res').innerHTML=`<span class="big">${fmt(C.psi,1)}× <span>stiffer</span></span><small>${pr?`The cells crease at ${fmt(C.Pc,2)} F₀ and break at ${fmt(C.Pb,2)} F₀ (solid bar: ${fmt(CEL.cr,2)} and 1). Same mass, ${fmt(C.Pb,2)}× stronger.`:`Same stiffness as the solid bar, but the foam starts to collapse at ${fmt(C.Pc,2)} F₀.`} F₀ = load that breaks the solid bar.</small>`;
     $('eq-m1').innerHTML=`b = 40 mm × (1/${fmt(rel,2)})<sup>½</sup> = <b>${fmt(b*1000,0)} mm</b> square, same mass as the 40 mm bar`;
     $('eq-m2').innerHTML=`E = ${fmt(rel,2)} × 35 GPa = <b>${sig(rel*CEL.Es)} GPa</b> · ψ = 1/${fmt(rel,2)} = <b>${fmt(1/rel,1)}</b>`;
-    $('eq-m3').innerHTML=`E = ${fmt(rel,2)}² × 35 GPa = <b>${sig(rel*rel*CEL.Es)} GPa</b> · ψ = <b>1</b>`;
-    $('eq-m4').innerHTML=`= <b>${sig(0.3*Math.pow(rel,1.5),2)} σ<sub>s</sub></b>; in the bigger foam beam the stress is ${sig(Math.pow(rel,1.5),2)}× lower, so it breaks at <b>0.30 F₀</b>`;
+    $('eq-m3').innerHTML=`E = ${fmt(rel,2)}² × 35 GPa = <b>${sig(rel*rel*CEL.Es)} GPa</b>, ψ = 1 · σ<sub>pl</sub> = <b>${sig(0.3*Math.pow(rel,1.5),2)} σ<sub>s</sub></b>; the bigger beam lowers the stress ${sig(Math.pow(rel,1.5),2)}× → collapse at <b>0.17 F₀</b>`;
+    $('eq-m4').innerHTML=`38.7 / 70.3 MPa = <b>0.55</b>: the squeezed face creases at 55% of the breaking load, then the stretched face breaks`;
     if(!HAS3D||!this.solid)return;if(Math.abs(b-this.b)>1e-9){this.build();return;}
     const L=CEL.L,objs=[[this.solid,CEL.b0,this.xs],[this.cell,b,this.xc]];
     objs.forEach(([o,bb,x],i)=>{const s=m.S[i],hv=i===1&&!pr?1.5:1;
       bendExtrude(o.geometry,L,s.drop,(u,y)=>{let v=s.e*hv*(1-u)*Math.abs(y)/(bb/2);if(s.pH>0)v=Math.max(v,1.2*Math.exp(-u/.05)*(Math.abs(y)>bb*.2?1:.6));return v;},s.rot,.015);
       const [yt,zt]=bentPoint(L,s.drop,s.rot,.015,bb/2,L),[yb,zb]=bentPoint(L,s.drop,s.rot,.015,-bb/2,L);
-      this.arr[i].position.set(x,.64+yt+.004,zt-.012);this.ws[i].position.set(x,.64+yb,zb-.012);this.ws[i].setCount(1+P*4);
+      this.arr[i].position.set(x,.64+yt+.004,zt-.012);this.ws[i].position.set(x,.64+yb,zb-.012);this.ws[i].setCount(1+P*3);
       this.tF[i].pos.set(x,.64+yt+.17,zt);this.tF[i].el.textContent='F = '+fmt(P,2)+' F₀';
       this.tState[i].pos.set(x,.64+yb-.17,zb);const bad=s.pH>0;this.tState[i].el.className='tag '+(bad?'bad':'ok');
-      this.tState[i].el.textContent=!bad?'elastic':(i===1&&!pr)?(s.fH>.3?'CELLS COLLAPSED':'CELLS HINGING'):(s.fH>0?'BROKEN: splintered':'KINK BAND on the squeezed face');
+      this.tState[i].el.textContent=!bad?'elastic':s.foam?(s.fH>.3?'CELLS COLLAPSED':'CELLS HINGING'):(s.fH>0?'BROKEN: splintered':'CREASED: kink band on the squeezed face');
       this.tSec[i].pos.set(x,.64+bb/2+.07,.06);
       this.tSec[i].el.innerHTML=i===0?secSVG('sq',{s:5})+`<span><b>Solid bar 40 × 40 mm</b>E<sub>s</sub> = 35 GPa · I = b⁴/12</span>`:secSVG(pr?'hex':'foam')+`<span><b>${pr?'Aligned cells':'Foam'} ${fmt(b*1000,0)} × ${fmt(b*1000,0)} mm</b>ρ/ρ<sub>s</sub> = ${fmt(rel,2)} · ψ = ${fmt(s.psi,1)}</span>`;
       const hy=(i===1&&!pr)||s.fH<=0?-bb/2:bb/2,[Y,Z]=bentPoint(L,s.drop,s.rot,.015,hy,.03);this.items[i].hot=new THREE.Vector3(x,.64+Y,Z);});
@@ -2172,15 +2189,20 @@ RIG.cells={hist:[0,0],histF:[0,0],mtype:'prism',items:[{name:'Solid bar'},{name:
         measure:'<b>Measure it:</b> a compression test on a foam block shows a straight elastic line, a long flat plateau (collapse), then a steep rise when the cells are flat.'};}
     const steps=['Elastic','Kink band','Splinters'];let st,head,why,sign=-1,where='squeezed (lower) face, at the clamp';
     if(s.fH>0){st='Splinters';sign=1;where='stretched (upper) face, at the clamp';head='The stretched face splinters';why='Fibres now break on the top face. Cellulose chains snap and fibres pull out of the lignin around them at different places, which leaves the long, splintered break typical of wood.';}
-    else if(s.pH>0){st='Kink band';head='The squeezed face fails first: a kink band';why='Along the grain, wood is only about half as strong in compression as in tension. The cell walls buckle together in a narrow inclined band. Inside the walls, hydrogen bonds between cellulose chains break and re-form as the chains slide.';}
+    else if(s.pH>0){st='Kink band';head='The squeezed face fails first: a kink band';why=`Along the grain, wood crushes at about 39 MPa but breaks in bending at about 70 MPa (Sitka spruce), so a crease forms at 55% of the breaking load (${fmt(s.Pc,2)} F₀ here). The cell walls buckle together in a narrow inclined band; inside them, hydrogen bonds between cellulose chains break and re-form. The beam still holds and softens until ${fmt(s.Pb,2)} F₀.`;}
     else{st='Elastic';head=i===0?'Elastic: the solid bar bends':'Elastic: walls along the beam stretch and shorten';why=i===0?'All of the wall solid is packed into a small section, close to the centre line, where bending does little.':'The walls run along the beam, so they carry load by stretching like the solid does. Spreading the same mass over a bigger section keeps E falling only as ρ/ρ<sub>s</sub>, while I grows much faster.';}
     return {mat:i===0?'wooddense':'wood',label:i===0?'Solid bar':'Aligned cells',where,sign,e:s.e,pl:s.pH,fr:s.fH,band:0,steps,stage:st,head,why,
       measure:'<b>Measure it:</b> a three-point bending test. Watch the squeezed face: a wrinkle (compression crease) appears before the stretched face breaks.'};},
   chartTest(svg,leg){const c=SER(),m=this.model(),cols=[c.a,m.pr?c.b:c.c],ser=[],marks=[];
-    m.S.forEach((s,i)=>{const dF=CEL.drop*s.Pf/s.psi*1000;ser.push({pts:[[0,0],[dF,s.Pf]],c:cols[i],w:2.8});ser.push({pts:[[dF,s.Pf],[1e4,s.Pf*(i===1&&!m.pr?1.03:0.6)]],c:cols[i],dash:'6 4',w:2});
-      marks.push({x:s.drop*1000+s.rot*CEL.L*1000*.8,y:m.P,c:cols[i]});});
-    plot(svg,{x:{min:0,max:240,label:'Tip deflection δ (mm), to the drawing’s scale'},y:{min:0,max:2.05,label:'Tip load F / F₀'},series:ser,marks,hl:[{v:m.P,c:c.cr,dash:'1 0',w:1},{v:1,c:c.a,dash:'2 4',label:'solid bar breaks (F₀)'}]});
-    legend(leg,[{c:c.a,t:'Solid bar'},{c:cols[1],t:m.pr?'Aligned cells':'Foam'},{c:c.mu,t:'after failure',dash:1},{c:c.cr,t:'applied load'}]);},
+    m.S.forEach((s,i)=>{const k=CEL.drop*1000/s.psi,dC=s.Pc*k;
+      if(s.foam){ser.push({pts:[[0,0],[dC,s.Pc]],c:cols[i],w:2.8});ser.push({pts:[[dC,s.Pc],[1e4,s.Pc*1.08]],c:cols[i],dash:'6 4',w:2});}
+      else{const dB=dC+1.7*(s.Pb-s.Pc)*k,pts=[[0,0],[dC,s.Pc]];for(let j=1;j<=12;j++){const f=j/12;pts.push([dC+(dB-dC)*f,s.Pc+(s.Pb-s.Pc)*Math.sqrt(f)]);}
+        ser.push({pts,c:cols[i],w:2.8});ser.push({pts:[[dB,s.Pb],[dB*1.08,s.Pb*.3],[1e4,s.Pb*.25]],c:cols[i],dash:'6 4',w:2});}
+      marks.push({x:s.drop*1000+Math.sin(s.rot)*CEL.L*1000,y:m.P,c:cols[i]});});
+    const ymax=Math.max(1.25,Math.min(3.6,m.S[1].Pb*1.15),m.P*1.08);
+    plot(svg,{x:{min:0,max:Math.max(240,1.15*CEL.drop*1000*(CEL.cr+1.7*(1-CEL.cr))),label:'Tip deflection δ (mm), to the drawing’s scale'},y:{min:0,max:ymax,label:'Tip load F / F₀'},series:ser,marks,hl:[{v:m.P,c:c.cr,dash:'1 0',w:1},{v:1,c:c.a,dash:'2 4',label:'solid bar breaks (F₀)'}],
+      texts:[{x:CEL.drop*1000*CEL.cr,y:CEL.cr,t:'crease',dx:8,dy:12,c:c.mu}]});
+    legend(leg,[{c:c.a,t:'Solid bar'},{c:cols[1],t:m.pr?'Aligned cells':'Foam'},{c:c.mu,t:m.pr?'after it breaks':'after failure',dash:1},{c:c.cr,t:'applied load'}]);},
   chartDesign(svg,leg){const c=SER(),m=this.model(),E=m.pr?m.rel*CEL.Es:m.rel*m.rel*CEL.Es;
     ashbyChart(svg,{solid:[CEL.rs,CEL.Es],solidLabel:'cell-wall solid',lines:[{slope:1,c:c.b,label:'aligned cells: E ~ ρ',at:.8},{slope:2,c:c.c,label:'foam: E ~ ρ²',at:.9}],
       points:[{x:m.rel*CEL.rs,y:E,c:m.pr?c.b:c.c,label:(m.pr?'aligned':'foam')+' '+sig(E)+' GPa',dx:-10,anchor:'end'}]});
@@ -2190,6 +2212,8 @@ RIG.cells={hist:[0,0],histF:[0,0],mtype:'prism',items:[{name:'Solid bar'},{name:
 /* =========================== 4. LATTICES =========================== */
 // Ti-6Al-4V (printed): E_s 115 GPa, sigma_s ~1000 MPa. Octet: E = rel/3 E_s (13.27), sigma = min(rel/3 sigma_s (13.28), 0.2 rel^2 E_s (13.29)).
 // Open BCC lattice (M < 0): E = rel^2 E_s (13.18), sigma_pl = 0.3 rel^1.5 sigma_s (13.20). Elastic squash drawn 8x; ratio true.
+// As-built printed Ti-6Al-4V has little ductility: tests show both lattice types failing by struts snapping along a ~45 deg band
+// (load then drops), not by layer-by-layer collapse. The open lattice first forms plastic hinges at its joints.
 const LAT={c:0.09,n:3,Es:115e3,ss:1000,rs:4430,X:8,smax:120};
 class SCurve extends THREE_Curve(){constructor(a){super();this.a=a;}getPoint(t,o){o=o||new THREE.Vector3();return o.set(this.a*(3*t*t-2*t*t*t-t),t-0.5,0);}}
 function THREE_Curve(){return window.THREE?THREE.Curve:class{};}
@@ -2204,16 +2228,16 @@ RIG.lattice={hist:[0,0],histF:[0,0],items:[{type:'octet',x:-0.3,name:'Octet trus
   model(){const rel=+$('l-r').value,s=this.sigma(),Eo=rel/3*LAT.Es,Eb=rel*rel*LAT.Es,so=Math.min(rel/3*LAT.ss,0.2*rel*rel*LAT.Es),sb=0.3*Math.pow(rel,1.5)*LAT.ss;
     const o={E:Eo,sf:so,buck:0.2*rel*rel*LAT.Es<rel/3*LAT.ss},b={E:Eb,sf:sb};
     o.pl=s>so?clamp((s-so)/(0.05*so),0,1):0;o.fr=s>1.03*so?clamp((s-1.03*so)/(0.12*so),0,1):0;
-    b.pl=s>sb?clamp((s-sb)/(0.12*sb),0,1):0;b.crush=s>sb?clamp((s-sb)/(1.3*sb),0,1):0;b.fr=clamp((b.crush-.55)/.45,0,1);
-    [o,b].forEach((x,i)=>{this.hist[i]=Math.max(this.hist[i],x.pl);this.histF[i]=Math.max(this.histF[i],i?x.crush:x.fr);x.pH=this.hist[i];x.fH=this.histF[i];x.e=Math.min(1,s/x.sf);x.eps=Math.min(s,x.sf)/x.E;});
-    b.cH=this.histF[1];b.frH=clamp((b.cH-.55)/.45,0,1);return {rel,s,S:[o,b]};},
+    b.pl=s>sb?clamp((s-sb)/(0.1*sb),0,1):0;b.fr=s>1.1*sb?clamp((s-1.1*sb)/(0.15*sb),0,1):0;
+    [o,b].forEach((x,i)=>{this.hist[i]=Math.max(this.hist[i],x.pl);this.histF[i]=Math.max(this.histF[i],x.fr);x.pH=this.hist[i];x.fH=this.histF[i];x.e=Math.min(1,s/x.sf);x.eps=Math.min(s,x.sf)/x.E;});
+    return {rel,s,S:[o,b]};},
   build(){clearRig();if(!HAS3D)return;const H=LAT.c*LAT.n;bedPlate(1.25,.6,0,0);
     for(const it of this.items){Object.assign(it,latticeNodesStruts(it.type));const g=new THREE.Group();g.position.x=it.x;rig.add(g);it.g=g;
       box(.42,.05,.42,M.chrome,0,.065,0,g);it.top=box(.42,.05,.42,M.chrome,0,0,0,g);const yTop=.09+H+.3;
       for(const sx of [-1,1]){cyl(.022,yTop,M.chrome,sx*.25,yTop/2+.04,-.16,g,20);}box(.6,.09,.12,M.paint,0,yTop,-.12,g);box(.16,.09,.22,M.paint,0,yTop,-.02,g);
       cyl(.06,.14,M.paint,0,yTop-.115,0,g);it.ramTop=yTop-.19;it.ram=cyl(.026,1,M.chrome,0,0,0,g);
       if(it.type==='octet'){const tg=new THREE.CylinderGeometry(1,1,1,10,1);it.inst=[new THREE.InstancedMesh(tg,M.ti,it.struts.length*2)];}
-      else it.inst=[0,1,2].map(()=>new THREE.InstancedMesh(new THREE.TubeGeometry(new SCurve(0),14,1,8,false),M.ti,it.struts.filter(s=>s[2]===0).length));
+      else it.inst=[new THREE.InstancedMesh(new THREE.TubeGeometry(new SCurve(0),14,1,8,false),M.ti,it.struts.length*2)];
       for(const im of it.inst){im.frustumCulled=false;im.castShadow=true;im.receiveShadow=true;im.instanceColor=new THREE.InstancedBufferAttribute(new Float32Array(im.count*3),3);track(im,M.ti);g.add(im);}
       it.tF=tag('','force',true);it.tSup=tag('rigid platens','sup',true);it.tSec=tag('','sec',true);it.tState=tag('');}
     this.update();},
@@ -2226,31 +2250,27 @@ RIG.lattice={hist:[0,0],histF:[0,0],items:[{type:'octet',x:-0.3,name:'Octet trus
     if(!HAS3D||!this.items[0].inst)return;const c=LAT.c,H=c*LAT.n,mtx=new THREE.Matrix4(),up=new THREE.Vector3(0,1,0),white=new THREE.Color(1,1,1),zero=new THREE.Matrix4().makeScale(0,0,0);
     this.items.forEach((it,ii)=>{const st=m.S[ii],oct=it.type==='octet',x0=-H/2,z0=-H/2,y0=.09;
       const epsD=LAT.X*st.eps;let r=oct?(c/Math.SQRT2)*Math.sqrt(rel/(6*Math.SQRT2*Math.PI)):c*Math.sqrt(rel/(4*Math.sqrt(3)*Math.PI));
-      let nodeP;const q=[0,0,0];
-      if(oct){const slide=.6*c*smooth(st.fH>0?Math.max(st.fH,.15):st.pH*.15);
-        nodeP=p=>{let x=p[0],y=p[1]*(1-epsD);const side=-(p[0]-H/2)+(p[1]-H/2)>1e-6;if(side){x-=slide/Math.SQRT2;y-=slide/Math.SQRT2;}return new THREE.Vector3(x0+x,y0+y,z0+p[2]);};
-        it.side=p=>-(p[0]-H/2)+(p[1]-H/2)>1e-6;}
-      else{const cr=st.cH!=null?st.cH:0;[1,0,2].forEach((l,k)=>{q[l]=0.6*clamp(cr*3-k,0,1);});
-        const hs=[0,1,2].map(l=>c*(1-epsD)*(1-q[l]));nodeP=p=>{const l=Math.min(2,Math.floor(p[1]/c+1e-6)),f=p[1]/c-l;let y=0;for(let k=0;k<l;k++)y+=hs[k];y+=(l<3?hs[Math.min(2,l)]*f:0);return new THREE.Vector3(x0+p[0],y0+y,z0+p[2]);};}
-      if(oct){const im=it.inst[0];let n=0;const broken=st.fH>.25;
-        const put=(p,qq,v)=>{const d=qq.clone().sub(p),len=d.length(),yv=d.clone().normalize();let xv=up.clone().sub(yv.clone().multiplyScalar(up.dot(yv)));if(xv.lengthSq()<1e-8)xv.set(1,0,0);xv.normalize();const zv=new THREE.Vector3().crossVectors(xv,yv);
-          mtx.makeBasis(xv.multiplyScalar(r),yv.multiplyScalar(len),zv.multiplyScalar(r));mtx.setPosition(p.clone().add(qq).multiplyScalar(.5));im.setMatrixAt(n,mtx);im.setColorAt(n,strainOn?cmap(v):white);n++;};
-        for(const [a,bb] of it.struts){const A=it.nodes[a],B=it.nodes[bb],p=nodeP(A),qq=nodeP(B),d=qq.clone().sub(p),cos2=(d.y/d.length())**2;const cross=it.side(A)!==it.side(B);
-          let v=st.e*.85*cos2;if(cross&&st.pH>0)v=Math.max(v,.95+.2*st.fH);
-          if(cross&&broken){put(p,p.clone().lerp(qq,.38),1.1);put(qq,qq.clone().lerp(p,.38),1.1);}else put(p,qq,v);}
-        while(n<im.count){im.setMatrixAt(n,zero);n++;}im.instanceMatrix.needsUpdate=true;im.instanceColor.needsUpdate=true;}
-      else{const lb=c*Math.sqrt(3)/2;it.inst.forEach((im,l)=>{const amp=0.9*epsD*lb+q[l]*0.55*lb;im.geometry.dispose();const g=new THREE.TubeGeometry(new SCurve(amp),14,r,8,false);
-          const col=new Float32Array(g.attributes.position.count*3);for(let i=0;i<g.attributes.position.count;i++){const u=Math.floor(i/9)/14;let v=strainOn?Math.min(1.2,(.25+.75*st.e)*Math.pow(Math.abs(1-2*u),1.5)):0;if(strainOn&&(st.pH>0||q[l]>0))v=Math.max(v,Math.pow(Math.abs(1-2*u),3)*(1+q[l]));const cc=cmap(v);col[3*i]=cc.r;col[3*i+1]=cc.g;col[3*i+2]=cc.b;}
-          g.setAttribute('color',new THREE.BufferAttribute(col,3));im.geometry=g;let n=0;
-          for(const [a,bb,lay] of it.struts){if(lay!==l)continue;const p=nodeP(it.nodes[a]),qq=nodeP(it.nodes[bb]),d=qq.clone().sub(p),len=d.length(),yv=d.clone().normalize();let xv=up.clone().sub(yv.clone().multiplyScalar(up.dot(yv)));if(xv.lengthSq()<1e-8)xv.set(1,0,0);xv.normalize();const zv=new THREE.Vector3().crossVectors(xv,yv);
-            mtx.makeBasis(xv,yv.multiplyScalar(len),zv);mtx.setPosition(p.clone().add(qq).multiplyScalar(.5));im.setMatrixAt(n,mtx);im.setColorAt(n,white);n++;}
-          im.instanceMatrix.needsUpdate=true;im.instanceColor.needsUpdate=true;im.material=strainOn?M.strain:M.ti;});}
-      if(oct)it.inst[0].material=strainOn?M.strainInst:M.ti;
+      // both lattices: uniform squash, then the block above a 45-degree plane slides down once struts across it snap
+      const slide=.6*c*smooth(st.fH>0?Math.max(st.fH,.15):st.pH*.12),side=p=>-(p[0]-H/2)+(p[1]-H/2)>1e-6;
+      const nodeP=p=>{let x=p[0],y=p[1]*(1-epsD);if(side(p)){x-=slide/Math.SQRT2;y-=slide/Math.SQRT2;}return new THREE.Vector3(x0+x,y0+y,z0+p[2]);};
+      const im=it.inst[0],broken=st.fH>.25;let n=0;
+      if(!oct){const lb=c*Math.sqrt(3)/2,amp=0.9*epsD*lb+st.pH*0.22*lb;im.geometry.dispose();const g=new THREE.TubeGeometry(new SCurve(amp),14,r,8,false);
+        const col=new Float32Array(g.attributes.position.count*3);for(let i=0;i<g.attributes.position.count;i++){const u=Math.floor(i/9)/14;let v=strainOn?Math.min(1.2,(.25+.75*st.e)*Math.pow(Math.abs(1-2*u),1.5)):0;if(strainOn&&st.pH>0)v=Math.max(v,Math.pow(Math.abs(1-2*u),3)*(1+st.pH*.3));const cc=cmap(v);col[3*i]=cc.r;col[3*i+1]=cc.g;col[3*i+2]=cc.b;}
+        g.setAttribute('color',new THREE.BufferAttribute(col,3));im.geometry=g;}
+      const hot=new THREE.Color(1,.35,.3);
+      const put=(p,qq,v)=>{const d=qq.clone().sub(p),len=d.length(),yv=d.clone().normalize();let xv=up.clone().sub(yv.clone().multiplyScalar(up.dot(yv)));if(xv.lengthSq()<1e-8)xv.set(1,0,0);xv.normalize();const zv=new THREE.Vector3().crossVectors(xv,yv);
+        if(oct)mtx.makeBasis(xv.multiplyScalar(r),yv.multiplyScalar(len),zv.multiplyScalar(r));else mtx.makeBasis(xv,yv.multiplyScalar(len),zv);
+        mtx.setPosition(p.clone().add(qq).multiplyScalar(.5));im.setMatrixAt(n,mtx);im.setColorAt(n,!strainOn?white:oct?cmap(v):(v>1?hot:white));n++;};
+      for(const [a,bb] of it.struts){const A=it.nodes[a],B=it.nodes[bb],p=nodeP(A),qq=nodeP(B),d=qq.clone().sub(p),cos2=(d.y/d.length())**2;const cross=side(A)!==side(B);
+        let v=st.e*.85*cos2;if(cross&&st.pH>0)v=Math.max(v,.95+.2*st.fH);
+        if(cross&&broken){put(p,p.clone().lerp(qq,.4),1.1);put(qq,qq.clone().lerp(p,.4),1.1);}else put(p,qq,v);}
+      while(n<im.count){im.setMatrixAt(n,zero);n++;}im.instanceMatrix.needsUpdate=true;im.instanceColor.needsUpdate=true;
+      im.material=strainOn?(oct?M.strainInst:M.strain):M.ti;
       let topY=0;for(const p of it.nodes)topY=Math.max(topY,nodeP(p).y);it.top.position.y=topY+.025;const rb=topY+.05,len=Math.max(.02,it.ramTop-rb);it.ram.scale.y=len;it.ram.position.y=rb+len/2;
       const X=it.x;it.tF.pos.set(X+.15,topY+.09,.2);it.tF.el.textContent='σ = F/A = '+sig(s,2)+' MPa';it.tSup.pos.set(X-.15,.04,.24);
       it.tSec.pos.set(X,.02,.26);it.tSec.el.innerHTML=`<span><b>${it.name}</b>ρ/ρ<sub>s</sub> = ${fmt(rel,3)} · E = ${sig(st.E/1000)} GPa · strut d/c = ${fmt(2*r/c,2)}</span>`;
-      it.tState.pos.set(X,topY+.2,0);const bad=st.pH>0;it.tState.el.className='tag '+(bad?'bad':'ok');it.tState.el.textContent=!bad?'elastic':oct?(st.fH>.25?'SHEAR BAND: struts snapped':'YIELDING'):(st.cH>.3?'LAYERS COLLAPSING':'HINGES AT JOINTS');
-      const hn=oct?[1.5*c,1.5*c,3*c]:[c,2*c,3*c];it.hot=nodeP(hn).add(new THREE.Vector3(X,0,0));});},
+      it.tState.pos.set(X,topY+.2,0);const bad=st.pH>0;it.tState.el.className='tag '+(bad?'bad':'ok');it.tState.el.textContent=!bad?'elastic':st.fH>.25?'SHEAR BAND: struts snapped':oct?'YIELDING':'HINGES AT JOINTS';
+      const hn=oct?[1.5*c,1.5*c,3*c]:[1.5*c,1.5*c,2.5*c];it.hot=nodeP(hn).add(new THREE.Vector3(X,0,0));});},
   pick:['Octet truss','Open lattice'],auto(){const s=this.S;const r=s.map(x=>x.pH>0?2+(x.fH||0):x.e);return r[1]>=r[0]?1:0;},
   story(i){const s=this.S[i];
     if(i===0){const steps=['Elastic','Yield','Struts snap'];let st,head,why,sign=-1;
@@ -2259,19 +2279,19 @@ RIG.lattice={hist:[0,0],histF:[0,0],items:[{type:'octet',x:-0.3,name:'Octet trus
       else{st='Elastic';head='Elastic: struts stretch and shorten';why='Triangulated struts cannot rotate without changing length, so they carry the load along their axes. That is why stiffness falls only in proportion to density: E ≈ ⅓(ρ/ρ<sub>s</sub>)E<sub>s</sub>.';}
       return {mat:'ti',label:'Octet truss',where:'a strut in the middle of the block',sign,e:s.e,pl:s.pH,fr:s.fH,band:0,steps,stage:st,head,why,
         measure:'<b>Measure it:</b> a compression test. A stretch-dominated lattice shows a high peak stress, then a sharp drop when the shear band forms.'};}
-    const steps=['Elastic','Hinges','Layers collapse'];let st,head,why;
-    if(s.frH>0||s.cH>.3){st='Layers collapse';head='One layer folds flat, then the next';why='Hinged layers collapse while the stress stays almost constant. In the printed alloy the joints are the roughest, most strained spots, so small cracks open there as the struts fold.';}
-    else if(s.pH>0){st='Hinges';head='Plastic hinges at the joints';why='Bending is largest at the ends of each strut, where it meets the joint. Dislocations glide in the α′ needles there first, and the strut ends rotate like hinges.';}
+    const steps=['Elastic','Hinges','Struts snap'];let st,head,why,sign=1;
+    if(s.fH>0){st='Struts snap';head='Struts snap at the joints, along a 45° band';why='As-built printed titanium stretches only a few percent before it breaks. Bending stress peaks at the joints, where the printed surface is also roughest, so cracks start there. Tests on printed Ti-6Al-4V lattices show them breaking along a band at about 45°, and the load drops; there is no long, gentle plateau.';}
+    else if(s.pH>0){st='Hinges';head='Plastic hinges at the joints';why=`Bending is largest at the ends of each strut, where it meets the joint. Dislocations glide in the α′ needles there first, at only ${sig(s.sf)} MPa of applied stress: σ<sub>pl</sub> ≈ 0.3(ρ/ρ<sub>s</sub>)<sup>3/2</sup>σ<sub>s</sub>.`;}
     else{st='Elastic';head='Elastic: struts bend into S-shapes';why='The open lattice has too few struts to be rigid (Maxwell M &lt; 0). The joints rotate and the struts bend, so stiffness falls as (ρ/ρ<sub>s</sub>)². The strain is highest at the strut ends.';}
-    return {mat:'ti',label:'Open lattice',where:'a strut end at a joint',sign:1,e:s.e,pl:s.pH,fr:s.frH,band:0,steps,stage:st,head,why,
-      measure:'<b>Measure it:</b> a compression test. A bending-dominated lattice shows a low yield stress followed by a long, flat plateau as layers collapse.'};},
+    return {mat:'ti',label:'Open lattice',where:'a strut end at a joint',sign,e:s.e,pl:s.pH,fr:s.fH,band:0,steps,stage:st,head,why,
+      measure:'<b>Measure it:</b> a compression test. The bending-dominated lattice yields at a much lower stress; in printed titanium it then breaks along a 45° band, with the load dropping.'};},
   chartTest(svg,leg){const c=SER(),m=this.model(),[o,b]=m.S,eyb=b.sf/b.E*100,xmax=Math.max(3*eyb,1.6*o.sf/o.E*100);
     plot(svg,{x:{min:0,max:xmax,label:'Strain ε (%)'},y:{min:0,max:Math.max(o.sf*1.3,m.s*1.1),label:'Stress σ (MPa)'},
       series:[{pts:[[0,0],[o.sf/o.E*100,o.sf]],c:c.b,w:2.8},{pts:[[o.sf/o.E*100,o.sf],[o.sf/o.E*100*1.15,o.sf*.45],[xmax*1.2,o.sf*.5]],c:c.b,dash:'6 4',w:2},
-        {pts:[[0,0],[eyb,b.sf]],c:c.c,w:2.8},{pts:[[eyb,b.sf],[xmax*1.2,b.sf*1.12]],c:c.c,dash:'6 4',w:2}],
+        {pts:[[0,0],[eyb,b.sf],[eyb*1.6,b.sf*1.1]],c:c.c,w:2.8},{pts:[[eyb*1.6,b.sf*1.1],[eyb*1.75,b.sf*.5],[xmax*1.2,b.sf*.55]],c:c.c,dash:'6 4',w:2}],
       hl:[{v:m.s,c:c.cr,dash:'1 0',w:1}],
-      marks:[{x:Math.min(m.s,o.sf)/o.E*100+(o.pH>0?o.sf/o.E*100*.5*o.fH:0),y:m.s,c:c.b},{x:Math.min(m.s,b.sf)/b.E*100+(b.cH||0)*xmax,y:m.s,c:c.c}],
-      texts:[{x:o.sf/o.E*100,y:o.sf,t:'peak, then shear band',dx:8,dy:-6,c:c.b},{x:xmax,y:b.sf*1.1,t:'plateau: layers collapse',anchor:'end',dy:-8,c:c.c}]});
+      marks:[{x:Math.min(m.s,o.sf)/o.E*100+(o.pH>0?o.sf/o.E*100*.5*o.fH:0),y:m.s,c:c.b},{x:Math.min(m.s,b.sf)/b.E*100*(1+0.6*b.pH)+b.fH*xmax*.4,y:m.s,c:c.c}],
+      texts:[{x:o.sf/o.E*100,y:o.sf,t:'peak, then shear band',dx:8,dy:-6,c:c.b},{x:eyb*1.6,y:b.sf*1.1,t:'hinges, then struts snap',dx:8,dy:-8,c:c.c}]});
     legend(leg,[{c:c.b,t:'Octet truss (stretch)'},{c:c.c,t:'Open lattice (bend)'},{c:c.mu,t:'after failure',dash:1},{c:c.cr,t:'applied load'}]);},
   chartDesign(svg,leg){const c=SER(),m=this.model(),[o,b]=m.S;
     ashbyChart(svg,{solid:[LAT.rs,LAT.Es/1000],solidLabel:'Ti-6Al-4V',lines:[{slope:1,c:c.b,label:'stretch: E ~ ρ',at:.7},{slope:2,c:c.c,label:'bend: E ~ ρ²',at:.85}],
@@ -2281,14 +2301,17 @@ RIG.lattice={hist:[0,0],histF:[0,0],items:[{type:'octet',x:-0.3,name:'Octet trus
 
 /* =========================== 5. CORRUGATION =========================== */
 // Galvanized S280GD sheet cantilevers 0.7 m x 0.3 m, t = 2 mm. phi_e = (2a+t)^2/t^2 (Eq. 12.8), phi_f = (2a+t)/t (Eq. 12.9), ideal.
-const SHT={L:0.7,W:0.3,t:0.002,lam:0.06,E:210e9,sy:280e6,Fmax:1000};SHT.I0=SHT.W*SHT.t**3/12;SHT.Z0=SHT.W*SHT.t**2/6;SHT.Fy0=SHT.sy*SHT.Z0/SHT.L;
+// The surface first yields at F_y = phi_f F_y0; the sheet folds when the full plastic moment forms: 1.5 M_y for a flat strip,
+// falling towards 4/pi = 1.27 M_y for a deep thin-walled wave (k_p = 1.27 + 0.23 t/(2a+t)).
+const SHT={L:0.7,W:0.3,t:0.002,lam:0.06,E:210e9,sy:280e6,Fmax:1600};SHT.I0=SHT.W*SHT.t**3/12;SHT.Z0=SHT.W*SHT.t**2/6;SHT.Fy0=SHT.sy*SHT.Z0/SHT.L;
 function sheetShape(a){const n=240,pts=[],W=SHT.W,t=SHT.t;for(let i=0;i<=n;i++){const x=-W/2+W*i/n;pts.push([x,a*Math.sin(2*Math.PI*(x+W/2)/SHT.lam)]);}
   const sh=new THREE.Shape();sh.moveTo(pts[0][0],pts[0][1]+t/2);for(const q of pts)sh.lineTo(q[0],q[1]+t/2);for(let i=pts.length-1;i>=0;i--)sh.lineTo(pts[i][0],pts[i][1]-t/2);sh.closePath();return sh;}
-RIG.sheet={hist:[0,0],histF:[0,0],items:[{name:'Flat sheet',x:-.2},{name:'Corrugated',x:.2}],view:{dir:[0.85,0.75,1.35],lift:-0.05},legend:['Bending strain / yield strain','0','yield'],
+RIG.sheet={hist:[0,0],histY:[0,0],histF:[0,0],items:[{name:'Flat sheet',x:-.2},{name:'Corrugated',x:.2}],view:{dir:[0.85,0.75,1.35],lift:-0.05},legend:['Bending strain / yield strain','0','yield'],
   F(){const u=+$('s-P').value;return SHT.Fmax*u*u;},
   model(){const at=+$('s-a').value,a=at*SHT.t,F=this.F(),pe=(2*at+1)**2,pf=2*at+1,phis=[[1,1],[pe,pf]];
-    const S=phis.map(([e,f],i)=>{const Fy=SHT.Fy0*f,pl=F>Fy?clamp((F-Fy)/(0.25*Fy),0,1):0,fr=F>1.5*Fy?clamp((F-1.5*Fy)/(0.5*Fy),0,1):0;this.hist[i]=Math.max(this.hist[i],pl);this.histF[i]=Math.max(this.histF[i],fr);
-      const Fe=Math.min(F,Fy);return {phe:e,phf:f,Fy,pl,fr,pH:this.hist[i],fH:this.histF[i],drop:Fe*SHT.L**3/(3*SHT.E*SHT.I0*e),rot:0.62*smooth(this.hist[i]),e:Math.min(1,F/Fy)};});
+    const S=phis.map(([e,f],i)=>{const Fy=SHT.Fy0*f,kp=1.27+0.23/f,Fp=kp*Fy,yld=F>Fy?clamp((F-Fy)/(Fp-Fy),0,1):0,pl=F>Fp?clamp((F-Fp)/(0.15*Fp),0,1):0,fr=F>1.25*Fp?clamp((F-1.25*Fp)/(0.4*Fp),0,1):0;
+      this.histY[i]=Math.max(this.histY[i],yld);this.hist[i]=Math.max(this.hist[i],pl);this.histF[i]=Math.max(this.histF[i],fr);
+      const Fe=Math.min(F,Fp);return {phe:e,phf:f,Fy,kp,Fp,yld,pl,fr,yH:this.histY[i],pH:this.hist[i],fH:this.histF[i],drop:Fe*SHT.L**3/(3*SHT.E*SHT.I0*e)*(1+0.8*yld*yld),rot:0.62*smooth(this.hist[i])+0.02*this.histY[i],e:Math.min(1,F/Fy)};});
     return {at,a,F,pe,pf,S};},
   build(){clearRig();if(!HAS3D)return;box(1.0,.62,.16,M.concrete,0,.31,-.13);box(.92,.03,.16,M.paint,0,.645,-.05);
     for(const x of [-.4,-.2,0,.2,.4])hexBolt(.016,x,.677,-.05);this.clampTop=box(.92,.03,.07,M.paint,0,.69,-.015);
@@ -2298,10 +2321,10 @@ RIG.sheet={hist:[0,0],histF:[0,0],items:[{name:'Flat sheet',x:-.2},{name:'Corrug
     this.dim=dimLine(new THREE.Vector3(1,0,0));this.tDim=tag('','dim',true);this.update();},
   update(){const m=this.model();this.S=m.S;const {at,a,F}=m;
     $('o-sa').textContent=fmt(at,2);$('o-sP').textContent=sig(F,3)+' N';
-    $('s-res').innerHTML=`<span class="big">${fmt(m.pe,m.pe<10?1:0)}× <span>stiffer</span></span><small>and ${fmt(m.pf,1)}× stronger than the flat sheet (ideal, Eqs 12.8–12.9). Flat yields at ${fmt(SHT.Fy0,0)} N; corrugated at ${sig(SHT.Fy0*m.pf)} N.</small>`;
+    const [f0,f1]=m.S;$('s-res').innerHTML=`<span class="big">${fmt(m.pe,m.pe<10?1:0)}× <span>stiffer</span></span><small>and ${fmt(m.pf,1)}× stronger (ideal, Eqs 12.8–12.9). Flat: surface yields at ${fmt(f0.Fy,0)} N, folds at ${fmt(f0.Fp,0)} N. Corrugated: ${sig(f1.Fy)} N and ${sig(f1.Fp)} N.</small>`;
     $('eq-s1').innerHTML=`I<sub>0</sub> = 0.3 m × (2 mm)³/12 = <b>2.0×10⁻¹⁰ m⁴</b> · flat tip drop now <b>${fmt(m.S[0].drop*1000,0)} mm</b>, corrugated <b>${fmt(m.S[1].drop*1000,1)} mm</b>`;
     $('eq-s2').innerHTML=`a = ${fmt(a*1000,1)} mm: φ<sub>e</sub> = (2×${fmt(a*1000,1)} + 2)²/2² = <b>${fmt(m.pe,m.pe<10?1:0)}</b>`;
-    $('eq-s3').innerHTML=`φ<sub>f</sub> = (2×${fmt(a*1000,1)} + 2)/2 = <b>${fmt(m.pf,1)}</b> → yields at φ<sub>f</sub> × ${fmt(SHT.Fy0,0)} N = <b>${sig(SHT.Fy0*m.pf)} N</b>`;
+    $('eq-s3').innerHTML=`φ<sub>f</sub> = (2×${fmt(a*1000,1)} + 2)/2 = <b>${fmt(m.pf,1)}</b> → surface yields at <b>${sig(m.S[1].Fy)} N</b>; full plastic fold at ${fmt(m.S[1].kp,2)}× that = <b>${sig(m.S[1].Fp)} N</b>`;
     if(!HAS3D||!this.flat)return;
     if(this.lastA!==a){if(this.cor){rig.remove(this.cor);this.cor.geometry.dispose();untrack(this.cor);}this.cor=track(mesh(new THREE.ExtrudeGeometry(sheetShape(a),{depth:SHT.L,steps:60,bevelEnabled:false,curveSegments:1}),M.galv),M.galv);this.cor.position.set(.2,.666,0);rig.add(this.cor);this.lastA=a;}
     const L=SHT.L;[[this.flat,0],[this.cor,a]].forEach(([o,amp],i)=>{const s=m.S[i],x=this.items[i].x,half=amp+SHT.t/2;
@@ -2309,24 +2332,25 @@ RIG.sheet={hist:[0,0],histF:[0,0],items:[{name:'Flat sheet',x:-.2},{name:'Corrug
       const [yt,zt]=bentPoint(L,s.drop,s.rot,.012,half,L),[yb,zb]=bentPoint(L,s.drop,s.rot,.012,-half,L);
       this.arr[i].position.set(x,.666+yt+.004,zt-.02);this.bar[i].position.set(x,.666+yb-.006,zb-.02);this.bar[i].rotation.x=-s.rot;this.ws[i].position.set(x,.666+yb-.012,zb-.02);this.ws[i].setCount(Math.max(1,F/80));
       this.tF[i].pos.set(x,.666+yt+.17,zt);this.tF[i].el.textContent='F = '+sig(F,3)+' N';
-      this.tState[i].pos.set(x+.08,.666+yb-.2,zb);const bad=s.pH>0;this.tState[i].el.className='tag '+(bad?'bad':'ok');this.tState[i].el.textContent=!bad?'elastic':s.pl>0?(s.fH>0?'FOLDED: zinc cracking':'YIELDED at the clamp'):'permanently bent';
+      this.tState[i].pos.set(x+.08,.666+yb-.2,zb);const lab=s.pl>0?(s.fH>0?'FOLDED: zinc cracking':'FOLDING at the clamp'):s.yld>0?'surface yielding':s.pH>0?'permanently bent':s.yH>0?'slightly bent for good':'elastic';this.tState[i].el.className='tag '+(lab==='elastic'?'ok':'bad');this.tState[i].el.textContent=lab;
       this.tSec[i].pos.set(x,.666+.1,.1);this.tSec[i].el.innerHTML=secSVG(i?'wave':'flat',{a:Math.min(9,2+at*1.5)})+`<span><b>${i?'Corrugated, a = '+fmt(amp*1000,1)+' mm':'Flat, t = 2 mm'}</b>φ<sub>e</sub> = ${fmt(s.phe,s.phe<10?1:0)} · φ<sub>f</sub> = ${fmt(s.phf,1)}</span>`;
       const xc=i?-SHT.W/2+SHT.lam/4+SHT.lam*Math.round((SHT.W/2-SHT.lam/4)/SHT.lam):0;const [Y,Z]=bentPoint(L,s.drop,s.rot,.012,half,.02);this.items[i].hot=new THREE.Vector3(x+xc,.666+Y,Z);});
     this.tSup.pos.set(0,.74,-.02);this.dim.set(new THREE.Vector3(-.39,.62,0),new THREE.Vector3(-.39,.62,L),.02);this.tDim.pos.set(-.39,.62,L*.5);this.tDim.el.textContent='L = 0.70 m';},
-  pick:['Flat sheet','Corrugated'],auto(){const s=this.S;const r=s.map(x=>x.pH>0?2+x.fH:x.e);return r[1]>r[0]?1:0;},
+  pick:['Flat sheet','Corrugated'],auto(){const s=this.S;const r=s.map(x=>x.pH>0?3+x.fH:x.yH>0?2+x.yH:x.e);return r[1]>r[0]?1:0;},
   story(i){const s=this.S[i],steps=['Elastic','Yield at surface','Fold','Zinc cracks'];let st,head,why;
     if(s.fH>0){st='Zinc cracks';head='The zinc coating cracks across the fold';why='Zinc is much less ductile than the steel under it. Where the fold stretches the top surface, fine cracks open across the coating. The steel is still whole, but it will now rust along these cracks.';}
-    else if(s.pH>.45){st='Fold';head=s.pl>0?'Fold line: slip right through the thickness':'Unloaded: the fold stays';why='The whole section at the clamp has yielded, so the sheet rotates there like a hinge. Removing the load takes away only the small elastic part of the bend.';}
-    else if(s.pH>0){st='Yield at surface';head='Yield starts at the top and bottom faces';why='Bending strain is largest at the surfaces at the clamp. Slip starts in the ferrite grains there, while the middle of the sheet is still elastic.';}
+    else if(s.pH>0){st='Fold';head=s.pl>0?'Fold line: slip right through the thickness':'Unloaded: the fold stays';why='The whole section at the clamp has yielded, so the sheet rotates there like a hinge. Removing the load takes away only the small elastic part of the bend.';}
+    else if(s.yH>0){st='Yield at surface';head=s.yld>0?'Yield starts at the top and bottom faces':'Unloaded: nearly straight, slip steps remain';why=`Bending strain is largest at the surfaces at the clamp. Slip starts in the ferrite grains there, while the middle of the sheet is still elastic, so it carries ${fmt((s.kp-1)*100,0)}% more load (up to ${sig(s.Fp)} N) before a fold line forms.`;}
     else{st='Elastic';head='Elastic: top stretches, bottom squeezes';why=i?'The wave moves steel far from the middle of the section, so the same load gives far less strain: φ<sub>f</sub> = (2a + t)/t.':'All of the steel sits within 1 mm of the middle of the section, so it bends easily and the surface strain climbs fast.';}
-    return {mat:'galv',label:this.items[i].name,where:'top face, at the clamp',sign:1,e:s.e,pl:s.pH,fr:s.fH,band:0,steps,stage:st,head,why,
+    return {mat:'galv',label:this.items[i].name,where:'top face, at the clamp',sign:1,e:s.e,pl:0.35*s.yH+0.65*s.pH,fr:s.fH,band:0,steps,stage:st,head,why,
       measure:'<b>Measure it:</b> hang known weights and read the tip drop with a ruler or dial gauge; the slope of load vs drop gives EI.'};},
   chartTest(svg,leg){const c=SER(),m=this.model(),cols=[c.a,c.b],ser=[],marks=[];let xmax=0;
-    m.S.forEach((s,i)=>{const dY=s.Fy*SHT.L**3/(3*SHT.E*SHT.I0*s.phe)*1000;xmax=Math.max(xmax,dY*1.6);ser.push({pts:[[0,0],[dY,s.Fy]],c:cols[i],w:2.8},{pts:[[dY,s.Fy],[1e5,s.Fy*1.04]],c:cols[i],dash:'6 4',w:2});
+    m.S.forEach((s,i)=>{const k=SHT.L**3/(3*SHT.E*SHT.I0*s.phe)*1000,pts=[[0,0],[s.Fy*k,s.Fy]];for(let j=1;j<=16;j++){const y=j/16,f=s.Fy+(s.Fp-s.Fy)*y;pts.push([f*k*(1+0.8*y*y),f]);}
+      const end=pts[pts.length-1];xmax=Math.max(xmax,end[0]*1.5);ser.push({pts,c:cols[i],w:2.8},{pts:[end,[1e5,s.Fp*1.03]],c:cols[i],dash:'6 4',w:2});
       marks.push({x:s.drop*1000+Math.sin(s.rot)*SHT.L*1000,y:m.F,c:cols[i]});});
-    plot(svg,{x:{min:0,max:Math.min(xmax,420),label:'Tip deflection δ (mm)'},y:{min:0,max:Math.max(m.S[1].Fy*1.15,m.F*1.1,120),label:'Tip load F (N)'},series:ser,marks,
-      hl:[{v:m.F,c:c.cr,dash:'1 0',w:1}],texts:[{x:Math.min(xmax,420),y:m.S[0].Fy,t:'flat yields',anchor:'end',dy:-7,c:c.a}]});
-    legend(leg,[{c:c.a,t:'Flat sheet'},{c:c.b,t:'Corrugated'},{c:c.mu,t:'after yield',dash:1},{c:c.cr,t:'applied load'}]);},
+    plot(svg,{x:{min:0,max:Math.min(xmax,480),label:'Tip deflection δ (mm)'},y:{min:0,max:Math.max(m.S[1].Fp*1.15,m.F*1.1,160),label:'Tip load F (N)'},series:ser,marks,
+      hl:[{v:m.F,c:c.cr,dash:'1 0',w:1}],texts:[{x:Math.min(xmax,480),y:m.S[0].Fp,t:'flat sheet folds',anchor:'end',dy:-7,c:c.a}]});
+    legend(leg,[{c:c.a,t:'Flat sheet'},{c:c.b,t:'Corrugated'},{c:c.mu,t:'after the fold forms',dash:1},{c:c.cr,t:'applied load'}]);},
   chartDesign(svg,leg){const c=SER(),m=this.model(),pe=[],pf=[];for(let i=0;i<=100;i++){const x=5*i/100;pe.push([x,(2*x+1)**2]);pf.push([x,2*x+1]);}
     plot(svg,{x:{min:0,max:5,label:'Wave amplitude / thickness a/t'},y:{min:1,max:150,log:true,label:'Gain over the flat sheet φ',ticks:[1,2,5,10,20,50,100]},
       series:[{pts:pe,c:c.b,w:2.8},{pts:pf,c:c.c,w:2.8}],vl:[{v:m.at,c:c.mu,dash:'2 3'}],
@@ -2360,7 +2384,8 @@ function renderChart(){if(!RIG[cur].S)return;const Rg=RIG[cur],fn=chartKind==='t
   $('ch-title').textContent=t;fn.call(Rg,$('ch-svg'),$('ch-leg'));
   if(!$('stagechart').hidden){$('sc-title').textContent=t;fn.call(Rg,$('sc-svg'),$('sc-leg'));}}
 function refresh(){RIG[cur].update();renderMicro();renderChart();}
-function newSpecimen(){const Rg=RIG[cur];Rg.hist=Rg.hist.map(()=>0);if(Rg.histF)Rg.histF=Rg.histF.map(()=>0);refresh();MIC.snap();}
+function clearHist(Rg){for(const k of Object.keys(Rg))if(/^hist/.test(k)&&Array.isArray(Rg[k]))Rg[k]=Rg[k].map(()=>0);}
+function newSpecimen(){clearHist(RIG[cur]);refresh();MIC.snap();}
 
 function show(id){stopPlay();cur=id;microPick=null;tabBtns.forEach(b=>b.setAttribute('aria-selected',b.dataset.tab===id));
   document.querySelectorAll('[data-panel]').forEach(el=>el.hidden=el.dataset.panel!==id);
@@ -2371,11 +2396,11 @@ tabBtns.forEach(b=>b.addEventListener('click',()=>show(b.dataset.tab)));
 /* sliders: geometry sliders make a new specimen and rebuild; load sliders only update */
 const GEOM={'c-L':'column','w-k':'wall','m-r':'cells','l-r':'lattice','s-a':'sheet'};
 const LOADS={'c-F':'column','w-F':'wall','m-P':'cells','l-P':'lattice','s-P':'sheet'};
-for(const id in GEOM)$(id).addEventListener('input',e=>{if(e.isTrusted)stopPlay();if(cur!==GEOM[id])return;const Rg=RIG[cur];Rg.hist=Rg.hist.map(()=>0);if(Rg.histF)Rg.histF=Rg.histF.map(()=>0);
+for(const id in GEOM)$(id).addEventListener('input',e=>{if(e.isTrusted)stopPlay();if(cur!==GEOM[id])return;const Rg=RIG[cur];clearHist(Rg);
   if(id==='c-L'||id==='w-k'||id==='l-r')Rg.build();refresh();});
 for(const id in LOADS)$(id).addEventListener('input',e=>{if(e.isTrusted)stopPlay();if(cur===LOADS[id])refresh();});
 $('m-type').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;RIG.cells.mtype=b.dataset.t;document.querySelectorAll('#m-type button').forEach(x=>x.setAttribute('aria-pressed',x===b));
-  RIG.cells.hist=[0,0];RIG.cells.histF=[0,0];if(cur==='cells'){RIG.cells.build();refresh();MIC.snap();}});
+  clearHist(RIG.cells);if(cur==='cells'){RIG.cells.build();refresh();MIC.snap();}});
 $('m-pick').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;microPick=+b.dataset.i;renderMicro();MIC.snap();});
 $('ch-pick').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;chartKind=b.dataset.c;document.querySelectorAll('#ch-pick button').forEach(x=>x.setAttribute('aria-pressed',x===b));renderChart();});
 function growChart(on){$('stagechart').hidden=!on;$('b-grow').setAttribute('aria-pressed',on);$('b-grow').textContent=on?'Back to the rig':'Enlarge';renderChart();}
